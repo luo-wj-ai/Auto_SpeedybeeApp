@@ -10,32 +10,36 @@ from Approach.filename import Filepath, apkfilename
 from appium.webdriver.common.appiumby import AppiumBy as Aby
 
 
-#启动webdriver的函数
-#重构函数，需要传端口号，安卓的版本，设备名字，其他默认
-def appdriver(port, version, devicename):
+#启动webdriver的函数。
+def appdriver(platformName, version):
     options = AppiumOptions()
-    options.load_capabilities({
-        "platformName": "Android",
-        "appium:platformVersion": version,
-        "appium:deviceName": devicename,
-        "appium:appPackage": "com.runcam.android.runcambf",
-        "appium:appActivity": "com.runcam.android.runcambf.SplashActivity",
-        "appium:resetKeyboard": True,
-        "appium:ignoreHiddenApiPolicyError": True,
-        "appium:ensureWebviewsHavePages": True,
-        "appium:nativeWebScreenshot": True,
-        "appium:newCommandTimeout": 3600,
-        "appium:connectHardwareKeyboard": True
-    })
-    link = f"http://127.0.0.1:{port}/wd/hub"
+    if platformName=="Android":
+        options.load_capabilities({
+            "platformName": platformName,
+            "appium:platformVersion": version,
+            "appium:deviceName": "Android phone",
+            "appium:appPackage": "com.runcam.android.runcambf",
+            "appium:appActivity": "com.runcam.android.runcambf.SplashActivity",
+            "appium:resetKeyboard": True,
+            "appium:ignoreHiddenApiPolicyError": True,
+            "appium:ensureWebviewsHavePages": True,
+            "appium:nativeWebScreenshot": True,
+            "appium:newCommandTimeout": 3600,
+            "appium:connectHardwareKeyboard": True
+        })
+    elif platformName=="iOS":
+        options.load_capabilities({
+            "platformName": platformName,
+            "appium:platformVersion": version,
+            "appium:deviceName": "iOS Phone",
+            "appium:app": "com.runcam.speedybee",
+            "appium:udid": "00008030-001109960186802E",
+            "appium:automationName": "XCUITest"
+        })
+    link = f"http://127.0.0.1:4723/wd/hub"
     # print(link)
     driver = webdriver.Remote(command_executor=link, options=options)
     return driver
-
-
-
-
-
 
 # 获取剪切板数据
 def clipapp(packagename, driver):
@@ -78,20 +82,7 @@ def clipapp(packagename, driver):
 
 
 #新方法#///////////////////////////////////////////////////////#新方法
-def ios_appdriver(platformName):
-    options = AppiumOptions()
-    options.load_capabilities({
-        "platformName": platformName,
-        "appium:platformVersion": "17.5.1",
-        "appium:deviceName": "SpeedyBeeTest的iPhone11",
-        "appium:app": "com.runcam.speedybee",
-        "appium:udid": "00008030-001109960186802E",
-        "appium:automationName": "XCUITest"
-    })
-    link = f"http://127.0.0.1:4723/wd/hub"
-    # print(link)
-    driver = webdriver.Remote(command_executor=link, options=options)
-    return driver
+
 
 # 获取元素文本
 #举例：tar=('etbc', Aby.XPATH, '//XCUIElementTypeStaticText[@name="发现luo"]')
@@ -122,7 +113,6 @@ def test_weile(name):
     filename = Filepath.iparesult_path + name + '\\' + current_date + '-' + name + '.txt'
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(content_tar)
-
 
 if __name__ == '__main__':
     test_weile("setting")

@@ -17,7 +17,7 @@ test_case：测试用例
 
 #push代码
 git add .
-git commit -m "change file, to be pushed to origin"
+git commit -m "这里面是你需要写的内容"
 git push
 
 #pull拉取代码

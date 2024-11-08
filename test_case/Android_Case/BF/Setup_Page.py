@@ -37,7 +37,7 @@ def report(testcasename):
     treport.report(description=filename, filename=filename, report_dir=report_path)
 
 
-class RECEIVERPAGE(unittest.TestCase):
+class Setup_Page(unittest.TestCase):
 
     def test_receiver_setting1(self):
         print('this is test_port_setting1')

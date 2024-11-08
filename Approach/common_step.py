@@ -14,23 +14,6 @@ from Element.iOS_Ele.aelement import COMMONSTEP_IOS
 from Approach.filename import Filepath
 from BeautifulReport import BeautifulReport
 
-# # 启动测试前，删除已运行进程
-# ————————调用函数并指定要停止的进程名——————————
-def kill_process(process_name):
-    # 执行ps命令并获取输出
-    ps_output = subprocess.check_output(['adb', 'shell', 'ps', '-ef']).decode()
-
-    # 在输出中查找包含指定进程名的行
-    for line in ps_output.splitlines():
-        if process_name in line:
-            # 获取进程PID
-            pid = line.split()[1]
-            # 使用kill命令停止进程
-            subprocess.run(['adb', 'shell', 'kill', '-9', pid])
-            print(f"进程 {process_name} 已停止 (PID: {pid})")
-            return
-
-    print(f"未找到进程 {process_name}")
 
 
 
