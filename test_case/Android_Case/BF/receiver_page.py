@@ -37,10 +37,6 @@ def report(testcasename):
     treport.report(description=filename, filename=filename, report_dir=report_path)
 
 
-# 5X7H4PQ84PLFCU8X 小米
-# 29201FDH2006VD 谷歌
-# 2311DRK48C  红米手机
-
 class RECEIVERPAGE(unittest.TestCase):
 
     def test_receiver_setting1(self):
@@ -66,29 +62,7 @@ class RECEIVERPAGE(unittest.TestCase):
         text_comparison(self, str(apkdata), winportfile)
         print("执行完成")
 
-    # @staticmethod
-    # def test_timesleep():
-    #     time.sleep(10)
 
-    # def test_receiver_setting2(self):
-    #     print('this is test_port_setting2')
-    #
-    #     driver = appdriver(port='4723', version='14', devicename='5X7H4PQ84PLFCU8X')  # 驱动
-    #     ele = RECEIVERELE.testcase2           # 元素集合
-    #     actions = RECEIVERACT.actions2          # 用例步骤
-    #
-    #     android_common_starup(driver)    # 打开app通用步骤
-    #
-    #     testmove(actions=actions, driver=driver, ele=ele)   # 执行用例
-    #     get_diff_result(driver)    # 获取diff结果
-    #     apkdata = clipapp(packagename="SpeedyBee_2.1.4(7090927).apk", driver=driver)
-    #
-    #     # 重置并断开连接-关闭app
-    #     android_common_teardown(driver)
-    #
-    #     # win station cli:暂定保存固定的cli输出文件
-    #     winportfile = Filepath.winresult_path + r'receiver\\testcase2.txt'
-    #     text_comparison(self, str(apkdata), winportfile)
 
 
 if __name__ == '__main__':

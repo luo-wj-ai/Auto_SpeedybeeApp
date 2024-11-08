@@ -1,20 +1,13 @@
 import unittest
 from datetime import datetime
 
-from SpeedybeeApp.AP.ele_control import app_ele_get
+# from SpeedybeeApp.AP.ele_control import app_ele_get
 import time
-from SpeedybeeApp.AP.ele_control import sendkeys
-from SpeedybeeApp.android_element.aelement import COMMONSTEP
 
-
-from SpeedybeeApp.AP.ele_control import rolling
-from SpeedybeeApp.AP.ele_control import click_ele
-from SpeedybeeApp.AP.ele_control import testmove
-from SpeedybeeApp.AP.ele_control import ControlerMove
-from SpeedybeeApp.android_element.aelement import VERMATCH
 from appium.webdriver.common.appiumby import AppiumBy as Aby
 import subprocess
-
+from Approach.ele_control import ControlerMove, app_ele_get, rolling, click_ele, sendkeys, testmove
+from Element.Android_Ele.aelement import COMMONSTEP
 from Element.iOS_Ele.aelement import COMMONSTEP_IOS
 
 #测试报告
@@ -38,48 +31,6 @@ def kill_process(process_name):
             return
 
     print(f"未找到进程 {process_name}")
-
-#获取飞控固件和硬件版本，并进行版本匹配检查。
-def ts_fmversion(driver):
-    tele = 'com.runcam.android.runcambf:id/bordInfo'
-    wait = ControlerMove(driver, timeout=10)
-    fwati = wait.ec('el', etype=Aby.ID, element=tele)
-    if fwati:
-        target = app_ele_get(driver, 'id', elem=tele)
-        text = target.text
-
-        # 获取测试飞控以及固件版本
-        if 'BTFL' in text:
-            fmversion = text.split('|')[1].strip()
-            print(fmversion)
-            s1 = text.split('|')[0].strip()
-            s2 = s1.split('(')[0].strip()
-            hwversion = s2.split('/')[1].strip()
-            print(hwversion)
-            if fmversion in VERMATCH.bf_fmversion and hwversion in VERMATCH.flight_ts:
-                return fmversion, hwversion
-            else:
-                driver.quit()
-                print('不是需要测试的飞控或软件版本')
-
-        elif 'INAV' in text:
-            fmversion = text.split('|')[1].strip()
-            hwversion = text.split('|')[0].strip()
-            print(fmversion)
-            print(hwversion)
-            if fmversion in VERMATCH.inav_fmversion and hwversion in VERMATCH.flight_ts:
-                return fmversion, hwversion
-            else:
-                driver.quit()
-                print('不是需要测试的飞控或软件版本')
-
-        else:
-            print('不知名的飞控，垃圾货，一边去')
-
-    else:
-        print('没有进入专家模式或设备信息读取失败')
-        driver.quit()
-
 
 
 
@@ -192,6 +143,29 @@ def text_comparison(self, apprfile, winrfile):
 
 
 #新方法#///////////////////////////////////////////////////////#新方法
+#Android重写方法，需要修改
+def android_common_starup(driver):
+    # 通用
+    testmove(COMMONSTEP_IOS.start_action, driver)
+    # 加入判断是否是测试设备（测试设备固定命名'luo'）
+    #发现了才进行立即连接
+    for _ in range(3):
+        try:
+            testwait = ControlerMove(driver=driver, timeout=5)
+            test = testwait.ec('etbc', Aby.XPATH, '//XCUIElementTypeStaticText[@name="发现luo"]')
+            content_tar = test.get_attribute('name')
+            if content_tar == "发现luo":
+                click_ele(driver, 'xpath', 'el', etype=Aby.XPATH,
+                          element='//XCUIElementTypeButton[@name="立即连接"]')  # 直接连接
+                # bluetooth_passwd(driver)# 输入密码&跳过密码
+                return    # 结束函数执行
+
+        except Exception as ee:
+            click_ele(driver, 'xpath', 'el', etype=Aby.XPATH,
+                      element='//XCUIElementTypeButton[@name="可识别的设备"]')  # 点击可识别的设备
+            click_ele(driver, 'xpath', 'el', etype=Aby.XPATH,
+                      element='//XCUIElementTypeButton[@name="重新搜索"]')  # 点击重新搜索
+    print("找了三次都没有找到飞控，请手动判断是否被其他设备影响\n")
 
 #iOS基础进入方法
 def iOS_common_starup(driver):
@@ -253,6 +227,8 @@ def report(testCaseName):
 
     treport = BeautifulReport(suite)
     treport.report(description=filename, filename=filename, report_dir=report_path)
+
+
 
 
 

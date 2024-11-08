@@ -3,39 +3,6 @@ Android-App 专家模式修改非空指定参数测试用例
 """
 from appium.webdriver.common.appiumby import AppiumBy as Aby
 
-# # 飞控型号，固件版本判断
-# 飞控型号
-class VERMATCH:
-    flight_ts = [
-        'SPEEDYBEEF405V4',
-        'SPEEDYBEEF405V3',
-        'SPEEDYBEEF7V2',
-        'SPEEDYBEEF7V3',
-        'SPEEDYBEE405MINI',
-        'SPEEDYBEE405WING'
-    ]
-
-    bf_fmversion = [
-        'BTFL 4.5.0',
-        'BTFL 4.4.3',
-        'BTFL 4.4.2',
-        'BTFL 4.4.0',
-        'BTFL 4.3.2',
-        'BTFL 4.3.1',
-        'BTFL 4.3.0',
-        'BTFL 4.2.11'
-    ]
-
-    inav_fmversion = [
-        'INAV 7.1.2',
-        'INAV 7.1.1',
-        'INAV 7.1.0',
-        'INAV 7.0.0',
-        'INAV 6.1.1',
-        'INAV 6.1.0'
-    ]
-
-
 
 
 class COMMONSTEP:

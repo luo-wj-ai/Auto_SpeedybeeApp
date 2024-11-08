@@ -1,5 +1,3 @@
-from SpeedybeeApp.AP.get_version import get_apk_version
-from SpeedybeeApp.AP.get_version import get_ios_version
 import time
 import os
 
@@ -67,13 +65,7 @@ def apkfilename(package):
     now = time.strftime("%H_%M_%S", time.localtime(time.time()))
     # your apkname
     apk_path = packagepath(package)
-    apk_version = get_apk_version(apk_path)
-    # 未携带文件路径
-    if apk_version is None:
-        # 如果没有获取到版本号，可以设置一个默认值或抛出异常
-        apk_version = '_unknown_version_'
-    print("apk_version:",apk_version)
-    filename = 'Android' + apk_version + '_' + now + '_' + r"cli.txt"
+    filename = 'Android' + '_' + now + '_' + r"cli.txt"
     filename = str(filename)
     return filename
 
@@ -84,9 +76,8 @@ def ipafilename(packname):
     now = time.strftime("%H_%M_%S", time.localtime(time.time()))
     # your ipaname
     ipa_path = packagepath(packname)
-    ipa_version = get_ios_version(ipa_path)
     # 未携带文件路径
-    filename = 'IOS' + ipa_version + '_' + now + '_' + r"cli.txt"
+    filename = 'IOS'  + '_' + now + '_' + r"cli.txt"
     filename = str(filename)
     return filename
 

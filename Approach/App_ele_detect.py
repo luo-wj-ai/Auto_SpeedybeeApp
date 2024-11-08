@@ -4,31 +4,33 @@ import time
 from appium import webdriver
 from appium.options.common.base import AppiumOptions
 from appium.webdriver.common.appiumby import AppiumBy
-from SpeedybeeApp.AP.filename import apkfilename
-from SpeedybeeApp.AP.filename import Filepath
+
+from Approach.ele_control import ControlerMove
+from Approach.filename import Filepath, apkfilename
 from appium.webdriver.common.appiumby import AppiumBy as Aby
-from SpeedybeeApp.AP.ele_control import ControlerMove
+
+
 #启动webdriver的函数
 #重构函数，需要传端口号，安卓的版本，设备名字，其他默认
-# def appdriver(port, version, devicename):
-#     options = AppiumOptions()
-#     options.load_capabilities({
-#         "platformName": "Android",
-#         "appium:platformVersion": version,
-#         "appium:deviceName": devicename,
-#         "appium:appPackage": "com.runcam.android.runcambf",
-#         "appium:appActivity": "com.runcam.android.runcambf.SplashActivity",
-#         "appium:resetKeyboard": True,
-#         "appium:ignoreHiddenApiPolicyError": True,
-#         "appium:ensureWebviewsHavePages": True,
-#         "appium:nativeWebScreenshot": True,
-#         "appium:newCommandTimeout": 3600,
-#         "appium:connectHardwareKeyboard": True
-#     })
-#     link = f"http://127.0.0.1:{port}/wd/hub"
-#     # print(link)
-#     driver = webdriver.Remote(command_executor=link, options=options)
-#     return driver
+def appdriver(port, version, devicename):
+    options = AppiumOptions()
+    options.load_capabilities({
+        "platformName": "Android",
+        "appium:platformVersion": version,
+        "appium:deviceName": devicename,
+        "appium:appPackage": "com.runcam.android.runcambf",
+        "appium:appActivity": "com.runcam.android.runcambf.SplashActivity",
+        "appium:resetKeyboard": True,
+        "appium:ignoreHiddenApiPolicyError": True,
+        "appium:ensureWebviewsHavePages": True,
+        "appium:nativeWebScreenshot": True,
+        "appium:newCommandTimeout": 3600,
+        "appium:connectHardwareKeyboard": True
+    })
+    link = f"http://127.0.0.1:{port}/wd/hub"
+    # print(link)
+    driver = webdriver.Remote(command_executor=link, options=options)
+    return driver
 
 
 
@@ -120,5 +122,7 @@ def test_weile(name):
     filename = Filepath.iparesult_path + name + '\\' + current_date + '-' + name + '.txt'
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(content_tar)
+
+
 if __name__ == '__main__':
     test_weile("setting")
