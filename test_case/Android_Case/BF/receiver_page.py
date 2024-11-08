@@ -1,19 +1,18 @@
 # encoding = utf-8
-import time
 import unittest
 from BeautifulReport import BeautifulReport
-from SpeedybeeApp.AP.filename import Filepath
-from SpeedybeeApp.AP.filename import reportfile_name
-from SpeedybeeApp.AP.App_ele_detect import appdriver
-from SpeedybeeApp.AP.App_ele_detect import clipapp
-from SpeedybeeApp.AP.common_step import text_comparison
+from Approach.filename import Filepath
+from Approach.filename import reportfile_name
+from Approach.App_ele_detect import appdriver
+from Approach.App_ele_detect import clipapp
+from Approach.common_step import text_comparison
 
-from SpeedybeeApp.AP.ele_control import testmove
-from SpeedybeeApp.AP.common_step import get_diff_result
-from SpeedybeeApp.AP.common_step import android_common_starup
-from SpeedybeeApp.AP.common_step import android_common_teardown
-from SpeedybeeApp.android_element.bf.receiver.receiver_ele import RECEIVERELE
-from SpeedybeeApp.android_element.bf.receiver.receiver_act import RECEIVERACT
+from Approach.ele_control import testmove
+from Approach.common_step import get_diff_result
+from Approach.common_step import android_common_starup
+from Approach.common_step import android_common_teardown
+from Element.Android_Ele.bf.receiver.receiver_ele import RECEIVERELE
+from Element.Android_Ele.bf.receiver.receiver_act import RECEIVERACT
 
 
 # report 测试套件-待解决问题，BeautifulReport引用testcase后，unittest再次引用，重复测试

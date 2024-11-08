@@ -1,9 +1,7 @@
 import unittest
 from datetime import datetime
 
-from SpeedybeeApp.AP.App_ele_detect import ios_appdriver, iOS_get_attribute
-from SpeedybeeApp.AP.ele_control import rolling, swipe, app_ele_get
-from SpeedybeeApp.AP.ele_control import click_ele
+from SpeedybeeApp.AP.ele_control import app_ele_get
 import time
 from SpeedybeeApp.AP.ele_control import sendkeys
 from SpeedybeeApp.android_element.aelement import COMMONSTEP
@@ -17,10 +15,10 @@ from SpeedybeeApp.android_element.aelement import VERMATCH
 from appium.webdriver.common.appiumby import AppiumBy as Aby
 import subprocess
 
-from iOS_Element.aelement import COMMONSTEP_IOS
+from Element.iOS_Ele.aelement import COMMONSTEP_IOS
 
 #测试报告
-from AP.filename import reportfile_name, Filepath
+from Approach.filename import Filepath
 from BeautifulReport import BeautifulReport
 
 # # 启动测试前，删除已运行进程

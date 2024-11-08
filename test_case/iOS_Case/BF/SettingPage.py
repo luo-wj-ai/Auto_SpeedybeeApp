@@ -1,10 +1,10 @@
 import unittest
 
-from AP.App_ele_detect import ios_appdriver
-from AP.common_step import iOS_common_starup, iOS_get_diff_result, report
-from AP.ele_control import testmove
+from Approach.App_ele_detect import ios_appdriver
+from Approach.common_step import iOS_common_starup, iOS_get_diff_result, report
+from Approach.ele_control import testmove
 
-from iOS_Element.BF.SettingAct import SettingAct
+from Element.iOS_Ele.BF.SettingAct import SettingAct
 
 
 
