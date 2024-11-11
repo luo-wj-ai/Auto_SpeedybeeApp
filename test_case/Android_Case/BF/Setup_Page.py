@@ -5,14 +5,14 @@ from Approach.filename import Filepath
 from Approach.filename import reportfile_name
 from Approach.App_ele_detect import appdriver
 from Approach.App_ele_detect import clipapp
-from Approach.common_step import text_comparison
+from Approach.Common_Step import text_comparison
 
-from Approach.ele_control import testmove
-from Approach.common_step import get_diff_result
-from Approach.common_step import android_common_starup
-from Approach.common_step import android_common_teardown
-from Element.Android_Ele.bf.receiver.receiver_ele import RECEIVERELE
-from Element.Android_Ele.bf.receiver.receiver_act import RECEIVERACT
+from Approach.Control_Ele import testmove
+from Approach.Common_Step import get_diff_result
+from Approach.Common_Step import android_common_starup
+from Approach.Common_Step import android_common_teardown
+from Element.Android_Ele.BF.receiver.receiver_ele import RECEIVERELE
+from Element.Android_Ele.BF.receiver.receiver_act import RECEIVERACT
 
 
 # report 测试套件-待解决问题，BeautifulReport引用testcase后，unittest再次引用，重复测试
@@ -39,24 +39,17 @@ def report(testcasename):
 
 class Setup_Page(unittest.TestCase):
 
-    def test_receiver_setting1(self):
-        print('this is test_port_setting1')
+    def test_Setup_Setting1(self):
 
-        driver = appdriver(port='4723', version='14', devicename='Pixel_7')  # 驱动
+        driver = appdriver(platformName="Android",version='14')  # 驱动
         ele = RECEIVERELE.testcase1           # 元素集合
         actions = RECEIVERACT.actions1          # 用例步骤
-        print("进入了app测试步骤\n")
         android_common_starup(driver)    # 打开app通用步骤
-        print("app通用步骤已完成\n执行用例\n")
         testmove(actions=actions, driver=driver, ele=ele)   # 执行用例
-        print("执行完成用例\n")
         get_diff_result(driver)    # 获取diff结果
-        print("执行完成diff结果")
         apkdata = clipapp(packagename="SpeedyBee_2.1.4(7090927).apk", driver=driver)
-        print("主方法已写入剪切板")
         # 重置并断开连接-关闭app
         android_common_teardown(driver)
-        print("已重置并断开连接-关闭app")
         # win station cli:暂定保存固定的cli输出文件
         winportfile = Filepath.winresult_path + r'receiver\\setting1.txt'
         text_comparison(self, str(apkdata), winportfile)
@@ -66,4 +59,4 @@ class Setup_Page(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    report(RECEIVERPAGE)
+    report(Setup_Page)
