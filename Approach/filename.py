@@ -31,11 +31,11 @@ class Filepath:
 
 
     # cli模式运行命令结果存储路径
-    apkresult_path = testpath + r'Result\\detail_result\\Android\\'
-    iparesult_path = testpath + r'Result\\detail_result\\IOS\\'
-    winresult_path = testpath + r'Result\\detail_result\\WIN\\'
-    testresult_path = testpath + r'Result\\test_result\\'
-    reportresult_path = testpath + r'Result/report_record'
+    apkresult_path = testpath + r'APP_Result\\detail_result\\Android\\'
+    iparesult_path = testpath + r'APP_Result\\detail_result\\IOS\\'
+    winresult_path = testpath + r'APP_Result\\detail_result\\WIN\\'
+    testresult_path = testpath + r'APP_Result\\test_result\\'
+    reportresult_path = testpath + r'APP_Result/report_record'
 
     # 创建目录
     # os.makedirs(apkresult_path, exist_ok=True)
