@@ -42,16 +42,16 @@ class AppiumHelper:
             raise
 
     # 点击元素
-    def click_ele(self, appby, cond, element):
+    def click_ele(self, appby, cond, ele):
         try:
-            if self.ec_get(appby, cond, element):
-                self.driver.find_element(by=AppiumBy.ID, value=element).click()
+            if self.ec_get(appby, cond, ele):
+                self.driver.find_element(by=AppiumBy.ID, value=ele).click()
                 return True
             else:
-                logging.warning(f"{element} is not clickable.")
+                logging.warning(f"{ele} is not clickable.")
                 return False
         except Exception as e:
-            logging.error(f"Error clicking element {element}: {e}")
+            logging.error(f"Error clicking element {ele}: {e}")
             return False
 
     # 页面滚动，根据元素

@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 from Approach.Control_Ele import testmove
 
-
+#这是dev分支
 # 抽象基类定义通用操作
 class Common_Step(ABC):
     def __init__(self, driver):
@@ -20,7 +20,7 @@ class Common_Step(ABC):
 
     @abstractmethod
     def bluetooth_passwd(self,actions):
-        """校验蓝牙密码"""
+        """校验蓝牙密码，暂时不实现"""
         pass
 
     @abstractmethod
@@ -32,21 +32,32 @@ class Common_Step(ABC):
 class Android_Common_Step(Common_Step):
 
     def Open_expert_mode(self):
-        actions1 = [
-            # 点击专家模式
-            ('click', 'xpath', 'el', Aby.XPATH, '//XCUIElementTypeButton[@name="专家模式"]'),
-            # 刚刚进入设置页面
-            # 点击校准加速度计
-            ('click', 'xpath', 'el', Aby.XPATH, '//XCUIElementTypeButton[@name="校准加速度计"]'),
-            # 右下角三个点
-            ('click', 'xpath', 'el', Aby.XPATH, '//XCUIElementTypeButton[@name="3point"]'),
-            #  ①点击校准校准加速度计
-            ('click', 'xpath', 'el', Aby.XPATH, '//XCUIElementTypeStaticText[@name="校准加速度计"]'),
-            #  ②点击重置设置
-            ('click', 'xpath', 'el', Aby.XPATH, '//XCUIElementTypeStaticText[@name="重置设置"]'),
-            # ③再次点击重置
-            ('click', 'xpath', 'el', Aby.XPATH, '//XCUIElementTypeButton[@name="重置"]'),
+        actions = [
+        #隐私政策
+            # 同意隐私政策
+            ('click', 'ID', 'el', 'com.runcam.android.runcambf:id/mCheckBox'),
+            # 点击同意
+            ('click', 'ID', 'el', 'com.runcam.android.runcambf:id/AgreeBtn'),
+        #首页
+            # 点击开始使用
+            ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="开始使用"]'),
+            #  点击＋号搜索设备   1077*2396
+            ('tap', 0.50417,0.84808),
+            ('time', 1),
+            #同意定位
+            ('click', 'ID', 'el', 'com.android.permissioncontroller:id/permission_allow_foreground_only_button'),
+            #同意
+            ('click', 'ID', 'el', 'com.android.permissioncontroller:id/permission_allow_button'),
+            ('time', 1),
+            #点击立即连接
+            ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="立即连接"]'),
+            #跳过密码
+            ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="跳过"]'),
+            ('time', 1),
+            #点击专家模式
+            ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="专家模式"]'),
             # 等待时间
-            ('time', 2)
+            ('time', 1)
         ]
+        testmove(actions, self.driver)
         pass
