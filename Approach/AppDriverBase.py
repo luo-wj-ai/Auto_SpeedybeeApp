@@ -32,7 +32,6 @@ class AndroidAppDriver(AppDriverBase):
             "appium:ensureWebviewsHavePages": True,
             "appium:nativeWebScreenshot": True,
             "appium:newCommandTimeout": 3600,
-            "appium:connectHardwareKeyboard": True
         })
 
 
