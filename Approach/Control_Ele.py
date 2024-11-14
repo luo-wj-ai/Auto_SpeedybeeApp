@@ -1,11 +1,13 @@
 import time
 import logging
+import coloredlogs
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
 import selenium.webdriver.support.expected_conditions as Ec
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
-# 配置日志
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# 配置彩色日志
+coloredlogs.install(level='INFO', fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 # 捕获元素的方法
 class AppiumHelper:
@@ -28,6 +30,7 @@ class AppiumHelper:
             'eltbs': Ec.element_located_to_be_selected,
             'voel': Ec.visibility_of_element_located
         }
+
         try:
             condition = conditions.get(cond)
             if condition:
@@ -37,49 +40,56 @@ class AppiumHelper:
                 return self.driver.find_element(by=locators.get(appby), value=ele)
             else:
                 raise ValueError(f"Unknown condition type: {cond}")
+        except (NoSuchElementException, TimeoutException) as e:
+            logging.error(f"Element not found or timed out while waiting for {ele}: {e}")
+            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
         except Exception as e:
             logging.error(f"Error waiting for element {ele}: {e}")
-            raise
+            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
 
     # 点击元素
     def click_ele(self, appby, cond, ele):
         try:
-            if self.ec_get(appby, cond, ele):
-                self.driver.find_element(by=AppiumBy.ID, value=ele).click()
+            element = self.ec_get(appby, cond, ele)
+            if element:
+                element.click()
+                logging.info(f"Clicked on element {ele}")
                 return True
-            else:
-                logging.warning(f"{ele} is not clickable.")
-                return False
+            return False
         except Exception as e:
             logging.error(f"Error clicking element {ele}: {e}")
+            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
             return False
 
     # 页面滚动，根据元素
     def rolling(self, susage, eusage, cond, startele, endele):
         try:
-            if self.ec_get(susage, cond, startele):
-                sdriver = self.ec_get(susage, cond, startele)
-                edriver = self.ec_get(eusage, cond, endele)
-                self.driver.scroll(sdriver, edriver)
+            start_element = self.ec_get(susage, cond, startele)
+            end_element = self.ec_get(eusage, cond, endele)
+            if start_element and end_element:
+                self.driver.scroll(start_element, end_element)
+                logging.info(f"Scrolled from {startele} to {endele}")
                 return True
             else:
-                logging.warning(f"Failed to scroll, {startele} is not visible.")
+                logging.warning(f"Failed to find elements to scroll: {startele} or {endele}")
                 return False
         except Exception as e:
-            logging.error(f"Cannot scroll: {e}")
+            logging.error(f"Error during scroll from {startele} to {endele}: {e}")
+            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
             return False
 
     # 输入内容
     def sendkeys(self, appby, cond, element, keys):
         try:
-            if self.ec_get(appby, cond, element):
-                self.driver.find_element(by=AppiumBy.ID, value=element).send_keys(str(keys))
+            element = self.ec_get(appby, cond, element)
+            if element:
+                element.send_keys(str(keys))
+                logging.info(f"Sent keys '{keys}' to element {element}")
                 return True
-            else:
-                logging.warning(f"Failed to send keys to {element}.")
-                return False
+            return False
         except Exception as e:
             logging.error(f"Cannot send keys to {element}: {e}")
+            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
             return False
 
     # 点击指定屏幕位置
@@ -89,9 +99,11 @@ class AppiumHelper:
             x = int(size['width'] * x_proportion)
             y = int(size['height'] * y_proportion)
             self.driver.tap([(x, y)])  # 执行点击操作
+            logging.info(f"Tapped at position ({x}, {y})")
             return True
         except Exception as e:
             logging.error(f"Tap error: {e}")
+            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
             return False
 
     # 滑动屏幕,根据屏幕坐标比例
@@ -103,27 +115,37 @@ class AppiumHelper:
             end_x = int(size['width'] * end_x_proportion)
             end_y = int(size['height'] * end_y_proportion)
             self.driver.swipe(start_x, start_y, end_x, end_y, duration=100)
+            logging.info(f"Swiped from ({start_x}, {start_y}) to ({end_x}, {end_y})")
             return True
         except Exception as e:
             logging.error(f"Swipe error: {e}")
+            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
             return False
 
     # 清除输入框内容
     def clear(self, appby, cond, element):
         try:
-            if self.ec_get(appby, cond, element):
-                self.driver.find_element(by=AppiumBy.ID, value=element).clear()
+            element = self.ec_get(appby, cond, element)
+            if element:
+                element.clear()
+                logging.info(f"Cleared content of element {element}")
                 return True
-            else:
-                logging.warning(f"{element} is not clearable.")
-                return False
+            return False
         except Exception as e:
             logging.error(f"Error clearing element {element}: {e}")
+            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
             return False
 
-    # 等待时间
+    #等待时间
     def time_sleep(self, num):
-        time.sleep(num)
+        try:
+            logging.info(f"Sleeping for {num} seconds")
+            time.sleep(num)
+            return True
+        except Exception as e:
+            logging.error(f"Error during sleep for {num} seconds: {e}")
+            self.fail(f"Test failed due to sleep error: {e}")  # 强制失败
+            return False
 
     # 执行操作
     def execute_action(self, action, *args):
@@ -143,9 +165,11 @@ class AppiumHelper:
                 return method(*args)
             else:
                 logging.error(f"Unknown action: {action}")
+                self.fail(f"Test failed due to unknown action: {action}")  # 强制使测试失败
                 return False
         except Exception as e:
             logging.error(f"Error executing action {action}: {e}")
+            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
             return False
 
 
@@ -159,16 +183,8 @@ def testmove(actions, driver):
             result = appium_helper.execute_action(action_name, *args)
             if not result:
                 logging.error(f"Action {action_name} failed")
+                break
         except Exception as e:
             logging.error(f"Error executing action {action}: {e}")
             driver.quit()
             break
-
-# # 用法示例
-# actions = [
-#     ('click', 'XPATH', 'el', 'some_button'),
-#     ('sendkeys', 'XPATH', 'el', 'some_input_field', 'Hello, World!'),
-#     ('swipe', 0.2, 0.4, 0.8, 0.4)
-# ]
-#
-# testmove(actions, driver)
