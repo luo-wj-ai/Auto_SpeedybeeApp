@@ -58,7 +58,6 @@ class Android_Common_Step(Common_Step):
          #     #点击专家模式
          #    ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="专家模式"]'),
             # 等待时间
-            ('time', 1),
             ('time', 2)
         ]
         testmove(actions, self.driver)
@@ -72,3 +71,18 @@ class Android_Common_Step(Common_Step):
 
     def get_diff_result(self):
         pass  # 暂时不实现或添加你的逻辑
+
+
+"""
+# 示例：实例化并调用方法
+if __name__ == "__main__":
+    # 假设 driver 已经初始化好，这里使用一个假的 driver
+    driver = None  # 这里应当替换为实际的 driver 实例
+
+    # 实例化 Android_Common_Step 类
+    android_steps = Android_Common_Step(driver)
+
+    # 调用 Open_expert_mode 方法
+    android_steps.Open_expert_mode()
+    
+    """
