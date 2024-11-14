@@ -4,14 +4,15 @@ from appium.options.common import AppiumOptions
 import threading
 
 
+# 基础类：AppDriverBase
 class AppDriverBase(ABC):
     _driver = None  # 类变量，用来存储共享的 driver 实例
     _lock = threading.Lock()  # 用于线程安全的锁
+    link = "http://127.0.0.1:4723/wd/hub"  # 在父类中定义 link 属性
 
     def __init__(self, version):
         self.version = version
-        self.options = AppiumOptions()
-        self.link = "http://127.0.0.1:4723/wd/hub"
+        self.options = AppiumOptions()  # 实例化 AppiumOptions，这样 options 是实例级的
         self.setup_options()
 
     @abstractmethod
@@ -20,23 +21,15 @@ class AppDriverBase(ABC):
         pass
 
     @classmethod
-    def get_driver(cls, version="12"):
+    def get_driver(cls, version="14"):
         """获取 driver 实例，确保只初始化一次"""
         if cls._driver is None:
             with cls._lock:  # 使用锁确保线程安全
                 if cls._driver is None:  # 再次检查 driver 是否为 None
-                    print("Initializing Appium Driver")
-                    # 如果没有实例，创建并初始化 driver
-                    cls._driver = webdriver.Remote(command_executor=cls.link, options=cls.options)
+                    # 创建 AndroidAppDriver 实例并调用实例的 options
+                    driver_instance = AndroidAppDriver(version)
+                    cls._driver = webdriver.Remote(command_executor=cls.link, options=driver_instance.options)
         return cls._driver
-
-    @classmethod
-    def quit_driver(cls):
-        """关闭 driver 实例"""
-        if cls._driver:
-            print("Quitting Appium Driver")
-            cls._driver.quit()
-            cls._driver = None
 
 
 class AndroidAppDriver(AppDriverBase):
