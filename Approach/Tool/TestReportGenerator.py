@@ -84,8 +84,8 @@ class TestReportGenerator:
         self.print_test_cases(suite)
 
         # 获取当前时间并格式化为字符串
-        now_time = time.strftime("%Y-%m-%d-%H%M%S", time.localtime())
-        filename = now_time + "TestReport.html"  # 测试报告文件名
+        now_time = time.strftime("%Y-%m-%d-{%H%M%S}", time.localtime())
+        filename = now_time + "-TestReport.html"  # 测试报告文件名
 
         # 创建报告目录（如果不存在）
         if not os.path.exists(self.report_dir):
@@ -94,7 +94,7 @@ class TestReportGenerator:
         print(f"报告文件名： {filename}")
         print(f"报告存储路径： {self.report_dir}")
         #打印艺术字
-        # self.print_test_report()
+        self.print_test_report()
 
         # 生成 BeautifulReport 测试报告
         try:
