@@ -24,14 +24,15 @@ class Common_Step(ABC):
         pass
 
     @abstractmethod
-    def get_diff_result(self):
-        """CLI模式下执行diff命令，获取命令返回的结果"""
+    def enter_CLI_mode(self):
+        """进入cli模式"""
         pass
 
-
+#小米手机的运行
 class Android_Common_Step(Common_Step):
 
     def Open_expert_mode(self):
+        """进入专家模式"""
         actions = [
         #隐私政策
             # 同意隐私政策
@@ -40,36 +41,58 @@ class Android_Common_Step(Common_Step):
             ('click', 'ID', 'el', 'com.runcam.android.runcambf:id/AgreeBtn'),
         #首页
             # 点击开始使用
-         #    ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="开始使用"]'),
-         #     #  点击＋号搜索设备   1077*2396
-         #     ('tap', 0.50417,0.84808),
-         #     ('time', 1),
-         #     #同意定位
-         #     ('click', 'ID', 'el', 'com.android.permissioncontroller:id/permission_allow_foreground_only_button'),
-         #     #同意
-         #   ('click', 'ID', 'el', 'com.android.permissioncontroller:id/permission_allow_button'),
-         #     ('time', 1),
-         #     #点击立即连接
-         #   ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="立即连接"]'),
-         #     #跳过密码
-         #   ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="跳过"]'),
-         #     ('time', 1),
-         # #速览页
-         #     #点击专家模式
-         #    ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="专家模式"]'),
+            ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="开始使用"]'),
+             #  点击＋号搜索设备   1077*2396
+            ('click', 'XPATH', 'el', '//android.widget.FrameLayout[@resource-id="com.runcam.android.runcambf:id/start_layout"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView[4]'),
+             #同意定位
+            ('click', 'XPATH', 'el', '//android.widget.Button[@text="本次使用允许"]'),
+             #同意
+            ('click', 'XPATH', 'el', '//android.widget.Button[@text="始终允许"]'),
+             #点击立即连接
+            ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="立即连接"]'),
+             #跳过密码
+            ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="跳过"]'),
+            ('time', 2),
+         #速览页
+             #点击专家模式
+            ('click', 'XPATH', 'el', '//android.widget.Button[@content-desc="专家模式"]'),
             # 等待时间
             ('time', 2)
         ]
         testmove(actions, self.driver)
         pass
 
+#
     def Exit_expert_mode(self):
         pass  # 暂时不实现或添加你的逻辑
 
     def bluetooth_passwd(self):
         pass  # 暂时不实现或添加你的逻辑
 
-    def get_diff_result(self):
+    #获取diff文件
+    def enter_CLI_mode(self):
+        actions = [
+        #滑动到cli输入diff
+            #点击设置页面
+            ('click', 'XPATH', 'el', '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/setup_icon"]'),
+            #滑动到页面最底部
+            (),
+            #点击CLI页面
+            ('click', 'XPATH', 'el', '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/cli_icon"]'),
+            #因为CLI页面还有BUG。需要进入两次
+            ('click', 'XPATH', 'el', '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/cli_icon"]'),
+            #输入diff命令
+            ('sendkeys', 'XPATH', 'el',
+             '//android.widget.AutoCompleteTextView[@resource-id="com.runcam.android.runcambf:id/send_content"]',
+             "diff"),
+            #点击发送
+            ('click', 'XPATH', 'el', '//android.widget.TextView[@resource-id="com.runcam.android.runcambf:id/send_btn"]'),
+            #点击复制按钮——复制到剪切板存放着
+            ('click', 'XPATH', 'el', '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/copy_btn"]'),
+        #defaults恢复默认设置
+            # 等待时间
+            ('time', 2)
+        ]
         pass  # 暂时不实现或添加你的逻辑
 
 

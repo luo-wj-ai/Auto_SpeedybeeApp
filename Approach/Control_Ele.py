@@ -9,21 +9,21 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 # 配置彩色日志
 coloredlogs.install(level='INFO', fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
+
 # 捕获元素的方法
 class AppiumHelper:
     def __init__(self, driver, timeout=5):
         self.driver = driver
-        self.wait = WebDriverWait(driver=driver, timeout=timeout)
+        self.wait = WebDriverWait(driver, timeout)
 
-    # 等待元素出现或满足条件,并进行定位
-    def ec_get(self, appby, cond, ele):
-        locators = {
+        # 提前定义好定位器和条件的映射字典
+        self.locators = {
             'ID': AppiumBy.ID,
             'XPATH': AppiumBy.XPATH,
             'ACCESSIBILITY_ID': AppiumBy.ACCESSIBILITY_ID,
             'NAME': AppiumBy.NAME
         }
-        conditions = {
+        self.conditions = {
             'el': Ec.presence_of_element_located,
             'etbc': Ec.element_to_be_clickable,
             'ioe': Ec.invisibility_of_element_located,
@@ -31,24 +31,29 @@ class AppiumHelper:
             'voel': Ec.visibility_of_element_located
         }
 
-        try:
-            condition = conditions.get(cond)
-            if condition:
-                # 等待直到条件满足
-                self.wait.until(condition((locators.get(appby), ele)))
-                # 条件满足后，获取并返回元素
-                return self.driver.find_element(by=locators.get(appby), value=ele)
-            else:
-                raise ValueError(f"Unknown condition type: {cond}")
-        except (NoSuchElementException, TimeoutException) as e:
-            logging.error(f"Element not found or timed out while waiting for {ele}: {e}")
-            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
-        except Exception as e:
-            logging.error(f"Error waiting for element {ele}: {e}")
-            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
+    def handle_error(self, msg, exception=None):
+        """统一的错误处理"""
+        logging.error(msg)
+        if exception:
+            logging.exception(exception)
 
-    # 点击元素
+    def ec_get(self, appby, cond, ele):
+        """通用元素定位获取"""
+        try:
+            condition = self.conditions.get(cond)
+            locator = self.locators.get(appby)
+            if not condition or not locator:
+                raise ValueError(f"Invalid locator or condition: {appby}, {cond}")
+            # 等待直到条件满足
+            self.wait.until(condition((locator, ele)))
+            return self.driver.find_element(by=locator, value=ele)
+        except (NoSuchElementException, TimeoutException) as e:
+            self.handle_error(f"Element not found or timed out while waiting for {ele}", e)
+        except Exception as e:
+            self.handle_error(f"Error waiting for element {ele}", e)
+
     def click_ele(self, appby, cond, ele):
+        """点击元素"""
         try:
             element = self.ec_get(appby, cond, ele)
             if element:
@@ -57,12 +62,11 @@ class AppiumHelper:
                 return True
             return False
         except Exception as e:
-            logging.error(f"Error clicking element {ele}: {e}")
-            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
+            self.handle_error(f"Error clicking element {ele}", e)
             return False
 
-    # 页面滚动，根据元素
     def rolling(self, susage, eusage, cond, startele, endele):
+        """滚动操作"""
         try:
             start_element = self.ec_get(susage, cond, startele)
             end_element = self.ec_get(eusage, cond, endele)
@@ -70,16 +74,14 @@ class AppiumHelper:
                 self.driver.scroll(start_element, end_element)
                 logging.info(f"Scrolled from {startele} to {endele}")
                 return True
-            else:
-                logging.warning(f"Failed to find elements to scroll: {startele} or {endele}")
-                return False
+            logging.warning(f"Failed to find elements to scroll: {startele} or {endele}")
+            return False
         except Exception as e:
-            logging.error(f"Error during scroll from {startele} to {endele}: {e}")
-            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
+            self.handle_error(f"Error during scroll from {startele} to {endele}", e)
             return False
 
-    # 输入内容
     def sendkeys(self, appby, cond, element, keys):
+        """发送键值"""
         try:
             element = self.ec_get(appby, cond, element)
             if element:
@@ -88,28 +90,26 @@ class AppiumHelper:
                 return True
             return False
         except Exception as e:
-            logging.error(f"Cannot send keys to {element}: {e}")
-            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
+            self.handle_error(f"Cannot send keys to {element}", e)
             return False
 
-    # 点击指定屏幕位置
     def tap(self, x_proportion, y_proportion):
+        """点击屏幕指定位置"""
         try:
-            size = self.driver.get_window_size()  # 获取屏幕尺寸
+            size = self.driver.get_window_size()
             x = int(size['width'] * x_proportion)
             y = int(size['height'] * y_proportion)
-            self.driver.tap([(x, y)])  # 执行点击操作
+            self.driver.tap([(x, y)])
             logging.info(f"Tapped at position ({x}, {y})")
             return True
         except Exception as e:
-            logging.error(f"Tap error: {e}")
-            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
+            self.handle_error(f"Tap error", e)
             return False
 
-    # 滑动屏幕,根据屏幕坐标比例
     def swipe(self, start_x_proportion, start_y_proportion, end_x_proportion, end_y_proportion):
+        """滑动操作"""
         try:
-            size = self.driver.get_window_size()  # 获取屏幕尺寸
+            size = self.driver.get_window_size()
             start_x = int(size['width'] * start_x_proportion)
             start_y = int(size['height'] * start_y_proportion)
             end_x = int(size['width'] * end_x_proportion)
@@ -118,12 +118,11 @@ class AppiumHelper:
             logging.info(f"Swiped from ({start_x}, {start_y}) to ({end_x}, {end_y})")
             return True
         except Exception as e:
-            logging.error(f"Swipe error: {e}")
-            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
+            self.handle_error(f"Swipe error", e)
             return False
 
-    # 清除输入框内容
     def clear(self, appby, cond, element):
+        """清除元素内容"""
         try:
             element = self.ec_get(appby, cond, element)
             if element:
@@ -132,23 +131,21 @@ class AppiumHelper:
                 return True
             return False
         except Exception as e:
-            logging.error(f"Error clearing element {element}: {e}")
-            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
+            self.handle_error(f"Error clearing element {element}", e)
             return False
 
-    #等待时间
     def time_sleep(self, num):
+        """睡眠操作"""
         try:
             logging.info(f"Sleeping for {num} seconds")
             time.sleep(num)
             return True
         except Exception as e:
-            logging.error(f"Error during sleep for {num} seconds: {e}")
-            self.fail(f"Test failed due to sleep error: {e}")  # 强制失败
+            self.handle_error(f"Error during sleep for {num} seconds", e)
             return False
 
-    # 执行操作
     def execute_action(self, action, *args):
+        """执行指定动作"""
         action_methods = {
             'click': self.click_ele,
             'rolling': self.rolling,
@@ -158,18 +155,15 @@ class AppiumHelper:
             'clear': self.clear,
             'time': self.time_sleep
         }
-
         try:
             method = action_methods.get(action)
             if method:
                 return method(*args)
             else:
-                logging.error(f"Unknown action: {action}")
-                self.fail(f"Test failed due to unknown action: {action}")  # 强制使测试失败
+                self.handle_error(f"Unknown action: {action}")
                 return False
         except Exception as e:
-            logging.error(f"Error executing action {action}: {e}")
-            self.fail(f"Test failed due to error: {e}")  # 强制使测试失败
+            self.handle_error(f"Error executing action {action}", e)
             return False
 
 
