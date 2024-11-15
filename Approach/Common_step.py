@@ -24,8 +24,8 @@ class Common_Step(ABC):
         pass
 
     @abstractmethod
-    def get_diff_result(self):
-        """CLI模式下执行diff命令，获取命令返回的结果"""
+    def enter_CLI_mode(self):
+        """进入cli模式"""
         pass
 
 #小米手机的运行
@@ -70,7 +70,29 @@ class Android_Common_Step(Common_Step):
         pass  # 暂时不实现或添加你的逻辑
 
     #获取diff文件
-    def get_diff_result(self):
+    def enter_CLI_mode(self):
+        actions = [
+        #滑动到cli输入diff
+            #点击设置页面
+            ('click', 'XPATH', 'el', '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/setup_icon"]'),
+            #滑动到页面最底部
+            (),
+            #点击CLI页面
+            ('click', 'XPATH', 'el', '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/cli_icon"]'),
+            #因为CLI页面还有BUG。需要进入两次
+            ('click', 'XPATH', 'el', '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/cli_icon"]'),
+            #输入diff命令
+            ('sendkeys', 'XPATH', 'el',
+             '//android.widget.AutoCompleteTextView[@resource-id="com.runcam.android.runcambf:id/send_content"]',
+             "diff"),
+            #点击发送
+            ('click', 'XPATH', 'el', '//android.widget.TextView[@resource-id="com.runcam.android.runcambf:id/send_btn"]'),
+            #点击复制按钮——复制到剪切板存放着
+            ('click', 'XPATH', 'el', '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/copy_btn"]'),
+        #defaults恢复默认设置
+            # 等待时间
+            ('time', 2)
+        ]
         pass  # 暂时不实现或添加你的逻辑
 
 
