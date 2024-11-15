@@ -1,5 +1,4 @@
 import unittest
-import threading
 from Approach.Common_step import Android_Common_Step
 from Approach.Get_Driver.AppDriverBase import AndroidAppDriver
 

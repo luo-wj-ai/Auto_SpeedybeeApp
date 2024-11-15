@@ -28,6 +28,11 @@ class Common_Step(ABC):
         """进入cli模式"""
         pass
 
+    @abstractmethod
+    def enter_CLI_mode(self):
+        """进入cli模式"""
+        pass
+
 #小米手机的运行
 class Android_Common_Step(Common_Step):
 
@@ -73,8 +78,6 @@ class Android_Common_Step(Common_Step):
     def enter_CLI_mode(self):
         actions = [
         #滑动到cli输入diff
-            #点击设置页面
-            ('click', 'XPATH', 'el', '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/setup_icon"]'),
             #滑动到页面最底部
             (),
             #点击CLI页面
@@ -90,6 +93,18 @@ class Android_Common_Step(Common_Step):
             #点击复制按钮——复制到剪切板存放着
             ('click', 'XPATH', 'el', '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/copy_btn"]'),
         #defaults恢复默认设置
+            # defaults输入命令
+            ('sendkeys', 'XPATH', 'el',
+             '//android.widget.AutoCompleteTextView[@resource-id="com.runcam.android.runcambf:id/send_content"]',
+             "defaults"),
+            # 点击发送
+            ('click', 'XPATH', 'el',
+             '//android.widget.TextView[@resource-id="com.runcam.android.runcambf:id/send_btn"]'),
+            #滑动到页面最顶部
+            (),
+            #点击设置页面——主要是为了退出飞控的CLI页面
+            ('click', 'XPATH', 'el',
+             '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/setup_icon"]'),
             # 等待时间
             ('time', 2)
         ]
