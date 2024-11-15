@@ -16,6 +16,7 @@ class MyUnit(unittest.TestCase):
             cls.driver = AndroidAppDriver.get_driver(version="14")
             # 实例化 Android_Common_Step，只需做一次初始化
             cls.android_steps = Android_Common_Step(cls.driver)
+        pass
 
     @classmethod
     def tearDownClass(cls):
@@ -26,6 +27,7 @@ class MyUnit(unittest.TestCase):
         # 打印当前执行的子类名称和方法名称
         MyUnit.setUp_count += 1
         print(f"第 {MyUnit.setUp_count} 次测试用例已开始：—————————————— {self.__class__.__name__}.{self._testMethodName}——————————————————————")
+        pass
 
     def tearDown(self):
         # 你可以在这里做一些清理工作，比如重置状态等
