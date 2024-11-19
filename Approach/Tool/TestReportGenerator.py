@@ -6,7 +6,7 @@ import pyfiglet
 
 
 class TestReportGenerator:
-    def __init__(self, test_case_dir, test_files):
+    def __init__(self, test_case_dir, test_files,result_dir="APP_Result/report"):
         """
         :param test_case_dir: 测试用例的目录
         :param test_files: 需要加载的测试用例文件列表
@@ -14,7 +14,7 @@ class TestReportGenerator:
         self.test_case_dir = test_case_dir
         self.test_files = test_files
         self.project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-        self.report_dir = os.path.join(self.project_root, "APP_Result/report")
+        self.report_dir = os.path.join(self.project_root, result_dir)
 
     def print_test_cases(self, suite):
         """递归打印测试用例名称"""

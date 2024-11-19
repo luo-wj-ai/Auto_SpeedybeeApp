@@ -1,13 +1,20 @@
 import unittest
 from Approach.Common_step import Android_Common_Step
 from Approach.Get_Driver.AppDriverBase import AndroidAppDriver
+from Approach.Tool.Assert_method import assert_method
+from Approach.Tool.FileComparator import FileComparator
 
+#针对
+result_dir="APP_Result/result/F405_AIO/Android_result"
 
 class MyUnit(unittest.TestCase):
-    setUp_count = 0
-    driver = None
+    setUp_count = 0       #每一次实现的步骤
+    driver = None           #driver
     android_steps = None  # 用于保存 Android_Common_Step 实例
+    close_driver = False  # 控制是否关闭 driver
 
+
+    #用于只启动一次drive，只进入一次专家模式
     @classmethod
     def setUpClass(cls):
         """setUpClass开始"""
@@ -16,19 +23,51 @@ class MyUnit(unittest.TestCase):
             cls.driver = AndroidAppDriver.get_driver(version="14")
             # 实例化 Android_Common_Step，只需做一次初始化
             cls.android_steps = Android_Common_Step(cls.driver)
+            #只进入一次专家模式
+            cls.android_steps.Open_expert_mode()
         pass
 
+    #用于标记位，断开飞控，关闭driver
     @classmethod
     def tearDownClass(cls):
         """tearDownClass结束"""
+        if cls.close_driver and cls.driver is not None:
+            print("正在关闭 driver...")
+            cls.android_steps.end_break() # 关闭 driver
+            cls.driver = None  # 清除 driver 引用
+        else:
+            print("未关闭 driver")
         pass
 
+
+    #用于控制每一次用例的执行的标记
     def setUp(self):
         # 打印当前执行的子类名称和方法名称
         MyUnit.setUp_count += 1
         print(f"第 {MyUnit.setUp_count} 次测试用例已开始：—————————————— {self.__class__.__name__}.{self._testMethodName}——————————————————————")
         pass
 
+
+    #用于控制部分用例——获取diff数据进行对比——并进行断言
     def tearDown(self):
-        # 你可以在这里做一些清理工作，比如重置状态等
+        self.android_steps.enter_CLI_mode()  # 进入cli-diff
+        cli_file_path, win_cli_file_path = assert_method(self.driver, self._testMethodName, result_dir)  # 获取剪切板数据
+        # 调用 FileComparator 进行比较
+        are_equal, content1, content2 = FileComparator.compare_files(cli_file_path, win_cli_file_path)
+
+        # 使用 unittest 的断言
+        self.assertTrue(are_equal, f"文件内容不匹配！\n文件1内容：\n{content1}\n文件2内容：\n{content2}")
+
+        if are_equal:
+            print(f"文件内容匹配成功：{cli_file_path} 与 {win_cli_file_path}")
         pass
+
+
+"""
+子类关闭方法：
+    @classmethod
+    def tearDownClass(cls):
+        cls.close_driver=True
+        super().tearDownClass()
+        pass
+"""
