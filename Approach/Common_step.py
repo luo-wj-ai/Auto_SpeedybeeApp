@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-
 from Approach.Control_Ele import testmove
+
 
 #这是dev分支
 # 抽象基类定义通用操作
@@ -20,9 +20,15 @@ class Common_Step(ABC):
         pass
 
     @abstractmethod
+    def Only_restore_default(self):
+        """只进入设置页面恢复默认"""
+        pass
+
+    @abstractmethod
     def end_break(self):
         """断开飞控连接，并且结束driver"""
         pass
+
 
 #小米手机的运行
 class Android_Common_Step(Common_Step):
@@ -67,7 +73,7 @@ class Android_Common_Step(Common_Step):
             ('time',5)
         ]
         testmove(actions, self.driver)
-        self.driver.quit()#退出手机driver
+        self.driver.quit()  # 关闭 driver
         pass
 
     #获取diff文件
@@ -102,7 +108,7 @@ class Android_Common_Step(Common_Step):
             #滑动到页面最顶部
             ('rolling', 'XPATH', 'XPATH', 'el',
              '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/configuration_icon"]',
-             '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/battery_icon"]',),
+             '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/battery_icon"]'),
             #点击设置页面——主要是为了退出飞控的CLI页面
             ('click', 'XPATH', 'el',
              '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/setup_icon"]'),
@@ -111,6 +117,32 @@ class Android_Common_Step(Common_Step):
         ]
         testmove(actions, self.driver)
         pass
+
+    #仅仅恢复默认
+    def Only_restore_default(self):
+        """只进入设置页面恢复默认"""
+        actions = [
+            # 利用设置页面的恢复默认设置恢复
+            # 滑动到页面最顶部
+            ('rolling', 'XPATH', 'XPATH', 'el',
+             '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/configuration_icon"]',
+             '//android.widget.ImageView[@resource-id="com.runcam.android.runcambf:id/battery_icon"]'),
+            #点击>
+            ('click', 'XPATH', 'el',
+             '//android.widget.LinearLayout[@resource-id="com.runcam.android.runcambf:id/more_button_btn"]'),
+            #点击恢复默认设置
+            ('click', 'XPATH', 'el',
+             '//android.widget.TextView[@resource-id="com.runcam.android.runcambf:id/reset_settings_btn"]'),
+            #点击重置
+            ('click', 'XPATH', 'el',
+             '//android.widget.TextView[@resource-id="com.runcam.android.runcambf:id/submmit_btn"]'),
+            # 等待时间
+            ('time', 3)
+        ]
+        testmove(actions, self.driver)
+        pass
+
+
 
 
 """
