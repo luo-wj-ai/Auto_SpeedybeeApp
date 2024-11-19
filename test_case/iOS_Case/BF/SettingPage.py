@@ -4,7 +4,7 @@ from Approach.App_ele_detect import ios_appdriver
 from Approach.Common_Step import iOS_common_starup, iOS_get_diff_result, report
 from Approach.Control_Ele import testmove
 
-from Element.iOS_Ele.BF.SettingAct import SettingAct
+from Element.F405_AIO.iOS_Ele.BF.SettingAct import SettingAct
 
 
 
