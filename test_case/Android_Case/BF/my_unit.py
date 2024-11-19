@@ -1,7 +1,7 @@
 import unittest
 from Approach.Common_step import Android_Common_Step
 from Approach.Get_Driver.AppDriverBase import AndroidAppDriver
-from Approach.Tool.Assert_method import assert_method
+from Approach.Tool.Cliapp import cliapp
 from Approach.Tool.FileComparator import FileComparator
 
 #针对
@@ -12,6 +12,8 @@ class MyUnit(unittest.TestCase):
     driver = None           #driver
     android_steps = None  # 用于保存 Android_Common_Step 实例
     close_driver = False  # 控制是否关闭 driver
+    use_contains_assert = True  # 默认为 False，表示使用 compare_files 进行文件比较
+    sequence_to_check = "*"  # 全局变量，存储待检查的字符串
 
 
     #用于只启动一次drive，只进入一次专家模式
@@ -50,17 +52,36 @@ class MyUnit(unittest.TestCase):
 
     #用于控制部分用例——获取diff数据进行对比——并进行断言
     def tearDown(self):
-        self.android_steps.enter_CLI_mode()  # 进入cli-diff
-        cli_file_path, win_cli_file_path = assert_method(self.driver, self._testMethodName, result_dir)  # 获取剪切板数据
-        # 调用 FileComparator 进行比较
-        are_equal, content1, content2 = FileComparator.compare_files(cli_file_path, win_cli_file_path)
+        """
+        测试结束后，根据布尔值选择文件比较方法：
+        - use_contains_sequence 为 True 时，使用 contains_sequence 方法检查文件是否包含指定内容；
+        - 否则，使用 compare_files 方法进行文件内容比较。
+        """
+        # 进入 CLI 模式
+        self.android_steps.enter_CLI_mode()
 
-        # 使用 unittest 的断言
-        self.assertTrue(are_equal, f"文件内容不匹配！\n文件1内容：\n{content1}\n文件2内容：\n{content2}")
+        # 获取剪切板数据并生成文件路径
+        cli_file_path, win_cli_file_path = cliapp(self.driver, self._testMethodName, result_dir)
 
-        if are_equal:
-            print(f"文件内容匹配成功：{cli_file_path} 与 {win_cli_file_path}")
-        pass
+        if self.use_contains_assert:
+            # 使用 compare_files 比较文件内容
+            are_equal, content1, content2 = FileComparator.compare_files(cli_file_path, win_cli_file_path)
+
+            # 使用 unittest 的断言
+            self.assertTrue(are_equal, f"文件内容不匹配！\n文件1内容：\n{content1}\n文件2内容：\n{content2}")
+
+            # 打印比较结果
+            if are_equal:
+                print(f"文件内容匹配成功：{cli_file_path} 与 {win_cli_file_path}")
+
+        else:
+            # 使用 contains_sequence 判断文件内容是否包含特定字符串
+            is_present = FileComparator.contains_sequence(cli_file_path, self.sequence_to_check)
+            # 使用 unittest 的断言
+            self.assertTrue(is_present, f"文件 {cli_file_path} 不包含指定字符串：{self.sequence_to_check}")
+            print(f"文件 {cli_file_path} 包含指定字符串：{self.sequence_to_check}")
+
+            self.use_contains_assert = True   #回到原始判断
 
 
 """
