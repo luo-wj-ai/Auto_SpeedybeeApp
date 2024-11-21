@@ -1,0 +1,21 @@
+{
+  "某某某Act": {
+    "action1": [
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "",
+        "comment": "注释"
+      },
+      {
+        "action": "sendkeys",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "",
+        "keys": "",
+        "comment": "注释"
+      }
+      ]
+  }
+}

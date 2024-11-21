@@ -1,0 +1,78 @@
+{
+  "ModeAct": {
+    "action1": [
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "//android.widget.ImageView[@resource-id=\"com.runcam.android.runcambf:id/modes_icon\"]",
+        "comment": "进入模式页面"
+      },
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "(//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_range_btn\"])[1]",
+        "comment": "点击第0个添加范围"
+      },
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "(//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_link_btn\"])[1]",
+        "comment": "点击第1个添加链接"
+      },
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "(//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_range_btn\"])[2]",
+        "comment": "点击第1个添加范围"
+      },
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "(//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_link_btn\"])[2]",
+        "comment": "点击第2个添加链接"
+      },
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "(//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_range_btn\"])[3]",
+        "comment": "点击第2个添加范围"
+      },
+      {
+        "action": "rolling",
+        "start_locator_type": "XPATH",
+        "start_locator": "(//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_range_btn\"])[3]",
+        "end_locator_type": "XPATH",
+        "end_locator": "(//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_range_btn\"])[2]",
+        "cond": "el",
+        "comment": "滑动页面，元素找不到"
+      },
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "(//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_link_btn\"])[2]",
+        "comment": "点击第3个添加链接"
+      },
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "(//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_range_btn\"])[2]",
+        "comment": "点击第3个添加范围"
+      },
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/save_btn\"]",
+        "comment": "点击保存"
+      }
+      ]
+  }
+}

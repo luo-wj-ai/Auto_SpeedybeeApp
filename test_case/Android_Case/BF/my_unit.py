@@ -1,20 +1,75 @@
+import time
+
+from Approach.Control_Ele import execute_actions
+from Approach.Tool.Get_Json_Path import get_json_path
 import unittest
 from Approach.Common_step import Android_Common_Step
 from Approach.Get_Driver.AppDriverBase import AndroidAppDriver
 from Approach.Tool.Cliapp import cliapp
 from Approach.Tool.FileComparator import FileComparator
 
-#针对
+#测试报告路径
 result_dir="APP_Result/result/F405_AIO/Android_result"
+#测试数据路径
+JSON_dir = "Element/F405_AIO/Android_Ele/BF"
 
 class MyUnit(unittest.TestCase):
     setUp_count = 0       #每一次实现的步骤
     driver = None           #driver
     android_steps = None  # 用于保存 Android_Common_Step 实例
     close_driver = False  # 控制是否关闭 driver
-    use_contains_assert = True  # 默认为 False，表示使用 compare_files 进行文件比较
+    use_contains_assert = True  # 默认为 True，表示使用 compare_files 进行文件比较或者其他方法
     sequence_to_check = "*"  # 全局变量，存储待检查的字符串
 
+
+    @staticmethod
+    def execute_actions(json_path, driver, act_name, group):
+        my_json_path=get_json_path(json_path,JSON_dir)
+        # 这里是 execute_actions 的实现代码
+        execute_actions(my_json_path, driver, act_name, group)
+        pass
+
+    #断言方法
+    def assert_compare_files_logic(self, cli_file_path, win_cli_file_path):
+        """
+        封装文件比较逻辑：
+        - 根据 `use_contains_assert` 来选择比较方法
+        - 使用 `compare_files` 或 `contains_sequence` 进行断言
+        """
+        if self.use_contains_assert:
+            # 使用 compare_files 比较文件内容
+            are_equal, content1, content2 = FileComparator.compare_files(cli_file_path, win_cli_file_path)
+
+            try:
+                # 使用 unittest 的断言
+                self.assertTrue(are_equal, f"文件内容不匹配！\n文件1内容：\n{content1}\n文件2内容：\n{content2}")
+            except AssertionError as e:
+                print(f"断言失败：{e}")
+
+            # 打印比较结果
+            if are_equal:
+                print(f"文件内容匹配成功：{cli_file_path} 与 {win_cli_file_path}")
+            else:
+                print(f"文件内容不匹配：{cli_file_path} 与 {win_cli_file_path}")
+
+        else:
+            # 使用 contains_sequence 判断文件内容是否包含特定字符串
+            """
+            使用实例
+                self.use_contains_assert = False
+                self.sequence_to_check="SPEEDYBEEF405AIO"
+            """
+            is_present = FileComparator.contains_sequence(cli_file_path, self.sequence_to_check)
+            try:
+                # 使用 unittest 的断言
+                self.assertTrue(is_present, f"文件 {cli_file_path} 不包含指定字符串：{self.sequence_to_check}")
+            except AssertionError as e:
+                print(f"断言失败：{e}")
+
+            print(f"文件 {cli_file_path} 包含指定字符串：{self.sequence_to_check}")
+
+            # 恢复到默认的 `use_contains_assert` 状态
+            self.use_contains_assert = True
 
     #用于只启动一次drive，只进入一次专家模式
     @classmethod
@@ -57,32 +112,16 @@ class MyUnit(unittest.TestCase):
         - use_contains_sequence 为 True 时，使用 contains_sequence 方法检查文件是否包含指定内容；
         - 否则，使用 compare_files 方法进行文件内容比较。
         """
+        time.sleep(4)#结束上一个保存，进行强制等待4秒
         # 进入 CLI 模式
         self.android_steps.enter_CLI_mode()
 
         # 获取剪切板数据并生成文件路径
         cli_file_path, win_cli_file_path = cliapp(self.driver, self._testMethodName, result_dir)
 
-        if self.use_contains_assert:
-            # 使用 compare_files 比较文件内容
-            are_equal, content1, content2 = FileComparator.compare_files(cli_file_path, win_cli_file_path)
-
-            # 使用 unittest 的断言
-            self.assertTrue(are_equal, f"文件内容不匹配！\n文件1内容：\n{content1}\n文件2内容：\n{content2}")
-
-            # 打印比较结果
-            if are_equal:
-                print(f"文件内容匹配成功：{cli_file_path} 与 {win_cli_file_path}")
-
-        else:
-            # 使用 contains_sequence 判断文件内容是否包含特定字符串
-            is_present = FileComparator.contains_sequence(cli_file_path, self.sequence_to_check)
-            # 使用 unittest 的断言
-            self.assertTrue(is_present, f"文件 {cli_file_path} 不包含指定字符串：{self.sequence_to_check}")
-            print(f"文件 {cli_file_path} 包含指定字符串：{self.sequence_to_check}")
-
-            self.use_contains_assert = True   #回到原始判断
-
+        # 断言————调用封装好的文件比较逻辑
+        self.assert_compare_files_logic(cli_file_path, win_cli_file_path)
+        pass
 
 """
 子类关闭方法：

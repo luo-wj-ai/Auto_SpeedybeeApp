@@ -34,6 +34,87 @@ git pull
 1. 命令行： python -m unittest -v yourfile.py
 2. 参考：https://www.cnblogs.com/youreyebows/p/7867508.html
 ---
+### 四。页面
+| BF页面  | 英文         | 操作步骤01                                      | 操作步骤02 |
+|:------|:-----------|:--------------------------------------------|:-----------|
+| 设置    | Setup      | 恢复默认设置                                      |            |
+| 预设    | Presets    | 选择固件4.5-DJI进行预设                             |            |
+| 端口    | Port       | 打开UART2-MSP<br/>UART3-串行接收机<br/>UART4-FrSky |            |
+| 模式    | Mode       | 添加前四个范围和前3个链接                               |            |
+| 接收机   | Receiver   |                                             |            |
+| 电机    | Motor      |                                             |            |
+| 配置    | Configure  |                                             |            |
+| PID调整 | Pid        |                                             |            |
+| OSD   | Osd        |                                             |            |
+| 图传    | Vtx        |                                             |            |
+| 电源和电池 | Battery    |                                             |            |
+| 失控保护  | Failsafe   |                                             |            |
+| 调整    | Adjustment |                                             |            |
+| GPS   | Gps        |                                             |            |
+| 舵机    | Servos     |                                             |            |
+| LED灯带 | Led        |                                             |            |
+| 黑匣子   | Blackbox   |                                             |            |
+| CLI   | Cli        |                                             |            |
+
+~~~
+### 五。实例JSON（动作）
+~~~json
+{
+  "actions": [
+    {
+      "action": "click",
+      "appby": "XPATH",
+      "cond": "el",
+      "ele": "//XCUIElementTypeButton[@name='登录']",
+      "comment": "点击登录按钮"
+    },
+    {
+      "action": "sendkeys",
+      "appby": "ID",
+      "cond": "el",
+      "ele": "username_input",
+      "keys": "test_user",
+      "comment": "在用户名输入框输入用户名"
+    },
+    {
+      "action": "clear",
+      "appby": "ID",
+      "cond": "el",
+      "ele": "password_input",
+      "comment": "清除密码输入框的内容"
+    },
+    {
+      "action": "time",
+      "duration": 3,
+      "comment": "等待 3 秒"
+    },
+    {
+      "action": "tap",
+      "x_proportion": 0.5,
+      "y_proportion": 0.8,
+      "comment": "点击屏幕中间位置"
+    },
+    {
+      "action": "swipe",
+      "start_x": 0.1,
+      "start_y": 0.5,
+      "end_x": 0.9,
+      "end_y": 0.5,
+      "comment": "从左侧滑动到右侧"
+    },
+    {
+      "action": "rolling",
+      "start_locator_type": "XPATH",
+      "start_locator": "//XCUIElementTypeCell[@name='起点']",
+      "end_locator_type": "XPATH",
+      "end_locator": "//XCUIElementTypeCell[@name='终点']",
+      "cond": "el",
+      "comment": "从起点滚动到终点"
+    }
+  ]
+}
+
+~~~
 ### 参考网址
 1. gitub项目源代码：[luo的gitub](https://github.com/luo-wj-ai/SpeedybeeApp)
 2. CSDN博客参考

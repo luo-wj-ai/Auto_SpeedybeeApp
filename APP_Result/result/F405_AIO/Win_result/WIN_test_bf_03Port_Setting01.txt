@@ -1,0 +1,31 @@
+#
+
+# diff
+
+# version
+# Betaflight / STM32F405 (S405) 4.5.1 Sep 22 2024 / 02:21:53 (77d01ba3b) MSP API: 1.46
+# config rev: f7a9c3f
+
+# start the command batch
+batch start
+
+board_name SPEEDYBEEF405AIO
+manufacturer_id SPBE
+
+# feature
+feature LED_STRIP
+feature OSD
+
+# serial
+serial 1 1 115200 57600 0 115200
+serial 2 64 115200 57600 0 115200
+serial 3 4 115200 57600 0 115200
+
+profile 0
+
+rateprofile 0
+
+# end the command batch
+batch end
+
+#

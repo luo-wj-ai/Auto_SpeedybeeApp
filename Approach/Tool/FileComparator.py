@@ -11,7 +11,7 @@ class FileComparator:
         :return: str, 提取的相关内容
         """
         # 使用正则表达式匹配文件内容中的相关部分
-        match = re.search(r"batch\s*start(.*?)\s*batch\s*end", file_content, re.DOTALL)
+        match = re.search(r"#\s*feature(.*?)\s*batch\s*end", file_content, re.DOTALL)
         if match:
             # 打印匹配到的内容进行调试
             # print(f"匹配到的内容: {match.group(1)}")
