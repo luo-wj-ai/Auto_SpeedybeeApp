@@ -40,17 +40,13 @@ class MyUnit(unittest.TestCase):
             # 使用 compare_files 比较文件内容
             are_equal, content1, content2 = FileComparator.compare_files(cli_file_path, win_cli_file_path)
 
-            try:
-                # 使用 unittest 的断言
-                self.assertTrue(are_equal, f"文件内容不匹配！\n文件1内容：\n{content1}\n文件2内容：\n{content2}")
-            except AssertionError as e:
-                print(f"断言失败：{e}")
+            # 使用 unittest 的断言
+            self.assertTrue(are_equal, f"文件内容不匹配！\n文件1内容：\n{content1}\n文件2内容：\n{content2}")
 
             # 打印比较结果
             if are_equal:
                 print(f"文件内容匹配成功：{cli_file_path} 与 {win_cli_file_path}")
-            else:
-                print(f"文件内容不匹配：{cli_file_path} 与 {win_cli_file_path}")
+
 
         else:
             # 使用 contains_sequence 判断文件内容是否包含特定字符串
@@ -60,11 +56,8 @@ class MyUnit(unittest.TestCase):
                 self.sequence_to_check="SPEEDYBEEF405AIO"
             """
             is_present = FileComparator.contains_sequence(cli_file_path, self.sequence_to_check)
-            try:
-                # 使用 unittest 的断言
-                self.assertTrue(is_present, f"文件 {cli_file_path} 不包含指定字符串：{self.sequence_to_check}")
-            except AssertionError as e:
-                print(f"断言失败：{e}")
+            # 使用 unittest 的断言
+            self.assertTrue(is_present, f"文件 {cli_file_path} 不包含指定字符串：{self.sequence_to_check}")
 
             print(f"文件 {cli_file_path} 包含指定字符串：{self.sequence_to_check}")
 

@@ -10,7 +10,7 @@ class Test_bf_01Setup(MyUnit):
         pass
 
     def test_bf_02Presets_Setting01(self):
-        """"""
+        """选择固件4.5-an进行预设 """
         super().execute_actions("PresetsAct.json", self.driver, act_name="PresetsAct", group="action1")
         pass
 
