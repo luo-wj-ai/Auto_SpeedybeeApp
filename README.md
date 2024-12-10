@@ -34,7 +34,7 @@ git pull
 1. 命令行： python -m unittest -v yourfile.py
 2. 参考：https://www.cnblogs.com/youreyebows/p/7867508.html
 ---
-### 四。页面
+### 四、页面
 | BF页面  | 英文         | 操作步骤01                                      | 操作步骤02 |
 |:------|:-----------|:--------------------------------------------|:-----------|
 | 设置    | Setup      | 恢复默认设置                                      |            |
@@ -56,7 +56,7 @@ git pull
 | 黑匣子   | Blackbox   |                                             |            |
 | CLI   | Cli        |                                             |            |
 
-~~~
+
 ### 五。实例JSON（动作）
 ~~~json
 {
