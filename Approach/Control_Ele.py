@@ -114,11 +114,19 @@ class AppiumHelper:
         return True
 
     def _tap(self, x_proportion, y_proportion, comment=""):
-        """屏幕点击操作"""
+        """屏幕点击操作，支持打印屏幕比例和实际坐标"""
+        # 获取屏幕尺寸
         size = self.driver.get_window_size()
-        x, y = int(size['width'] * x_proportion), int(size['height'] * y_proportion)
+        width, height = size['width'], size['height']
+
+        # 计算点击的实际坐标
+        x, y = int(width * x_proportion), int(height * y_proportion)
+
+        # 执行点击操作
         self.driver.tap([(x, y)])
-        logging.info(f"Tapped at position: ({x}, {y}) - {comment}")
+        # 打印屏幕尺寸、点击比例和实际坐标
+        logging.info(f"Screen size: width={width}, height={height}")
+        logging.info(f"Tapped at position: (x={x}, y={y}) - {comment}")
         return True
 
     def _swipe(self, start_x, start_y, end_x, end_y, duration=100, comment=""):

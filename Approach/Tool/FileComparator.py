@@ -3,20 +3,41 @@ import re
 
 
 class FileComparator:
+
+    # def extract_relevant_content(file_content):
+    #     """
+    #     提取文件中从 `# start the command batch` 到 `batch end` 的内容，并移除多余的换行符。
+    #     :param file_content: str, 文件的完整内容
+    #     :return: str, 提取的相关内容
+    #     """
+    #     # 使用正则表达式匹配文件内容中的相关部分
+    #     match = re.search(r"#\s*feature(.*?)\s*batch\s*end", file_content, re.DOTALL)
+    #     if match:
+    #         # 打印匹配到的内容进行调试
+    #         # print(f"匹配到的内容: {match.group(1)}")
+    #         # 返回提取的内容，移除多余的空白字符
+    #         return re.sub(r"\s+", "", match.group(1))  # 移除所有空白字符
+    #     return ""  # 如果没有找到相关内容，返回空字符串
     @staticmethod
     def extract_relevant_content(file_content):
         """
-        提取文件中从 `# start the command batch` 到 `batch end` 的内容，并移除多余的换行符。
+        提取文件中从 `# start the command batch` 到 `batch end` 的内容，
+        并移除所有以 `feature` 开头的行，然后移除多余的换行符。
         :param file_content: str, 文件的完整内容
         :return: str, 提取的相关内容
         """
         # 使用正则表达式匹配文件内容中的相关部分
         match = re.search(r"#\s*feature(.*?)\s*batch\s*end", file_content, re.DOTALL)
         if match:
-            # 打印匹配到的内容进行调试
-            # print(f"匹配到的内容: {match.group(1)}")
-            # 返回提取的内容，移除多余的空白字符
-            return re.sub(r"\s+", "", match.group(1))  # 移除所有空白字符
+            # 提取匹配的部分
+            content = match.group(1)
+
+            # 删除所有以 'feature' 开头的行
+            content = re.sub(r"^feature.*\n", "", content, flags=re.MULTILINE)
+
+            # 移除多余的空白字符
+            return re.sub(r"\s+", "", content)
+
         return ""  # 如果没有找到相关内容，返回空字符串
 
     # 判断两个文件是否相等

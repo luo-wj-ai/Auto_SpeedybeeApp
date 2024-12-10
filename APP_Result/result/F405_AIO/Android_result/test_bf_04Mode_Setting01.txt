@@ -5,24 +5,19 @@ b"Entering CLI Mode, type 'exit' to return, or 'help'
 #diff
 
 # version
-# Betaflight / STM32F405 (S405) 4.5.1 Jul 27 2024 / 03:06:45 (77d01ba3b) MSP API: 1.46
+# Betaflight / STM32F405 (S405) 4.5.1 Jul 27 2024 / 03:21:08 (77d01ba3b) MSP API: 1.46
 # config rev: fb15bf8
 
 # start the command batch
 batch start
 
-board_name SPEEDYBEEF405MINI
+board_name SPEEDYBEEF405V4
 manufacturer_id SPBE
 
 # feature
-feature SERVO_TILT
-feature RANGEFINDER
 feature TELEMETRY
 feature LED_STRIP
-feature DISPLAY
 feature OSD
-feature CHANNEL_FORWARDING
-feature TRANSPONDER
 
 # aux
 aux 0 0 255 1300 1700 0 0

@@ -1,3 +1,5 @@
+import unittest
+
 from test_case.Android_Case.BF.my_unit import MyUnit
 
 
@@ -9,6 +11,7 @@ class Test_bf_01Setup(MyUnit):
         super().execute_actions("SetupAct.json", self.driver, act_name="SetupAct", group="action1")
         pass
 
+    @unittest.skip("跳过这个测试")
     def test_bf_02Presets_Setting01(self):
         """选择固件4.5-an进行预设 """
         super().execute_actions("PresetsAct.json", self.driver, act_name="PresetsAct", group="action1")

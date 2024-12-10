@@ -1,5 +1,5 @@
 import time
-
+import unittest
 from Approach.Control_Ele import execute_actions
 from Approach.Tool.Get_Json_Path import get_json_path
 import unittest
@@ -36,6 +36,7 @@ class MyUnit(unittest.TestCase):
         - 根据 `use_contains_assert` 来选择比较方法
         - 使用 `compare_files` 或 `contains_sequence` 进行断言
         """
+
         if self.use_contains_assert:
             # 使用 compare_files 比较文件内容
             are_equal, content1, content2 = FileComparator.compare_files(cli_file_path, win_cli_file_path)
@@ -63,6 +64,7 @@ class MyUnit(unittest.TestCase):
 
             # 恢复到默认的 `use_contains_assert` 状态
             self.use_contains_assert = True
+        pass
 
     #用于只启动一次drive，只进入一次专家模式
     @classmethod

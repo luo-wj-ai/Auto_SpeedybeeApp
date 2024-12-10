@@ -8,7 +8,7 @@ import threading
 class AppDriverBase(ABC):
     _driver = None  # 类变量，用来存储共享的 driver 实例
     _lock = threading.Lock()  # 用于线程安全的锁
-    link = "http://127.0.0.1:4723/wd/hub"  # 在父类中定义 link 属性
+    link = "http://127.0.0.1:4723"  # 在父类中定义 link 属性
 
     def __init__(self, version):
         self.version = version
@@ -36,16 +36,19 @@ class AndroidAppDriver(AppDriverBase):
     def setup_options(self):
         """为 Android 配置 Appium 驱动"""
         self.options.load_capabilities({
-            "platformName": "Android",
-            "appium:platformVersion": self.version,
-            "appium:deviceName": "Android phone",
-            "appium:appPackage": "com.runcam.android.runcambf",
-            "appium:appActivity": "com.runcam.android.runcambf.SplashActivity",
-            "appium:resetKeyboard": True,
-            "appium:ignoreHiddenApiPolicyError": True,
-            "appium:ensureWebviewsHavePages": True,
-            "appium:nativeWebScreenshot": True,
-            "appium:newCommandTimeout": 3600,
+            "platformName": "Android",  # 目标平台为 Android
+            "appium:platformVersion": self.version,  # 动态指定设备的 Android 系统版本
+            "appium:deviceName": "Android phone",  # 设备名称，可以是任意值（例如"Android phone"）
+            "appium:appPackage": "com.runcam.android.runcambf",  # 应用包名（需要测试的应用包名）
+            "appium:appActivity": "com.runcam.android.runcambf.SplashActivity",  # 应用启动的 Activity
+            "appium:automationName": "UiAutomator2",  # 指定自动化引擎为 UiAutomator2
+            "appium:resetKeyboard": True,  # 重置输入法为默认的 Appium 输入法
+            "appium:ignoreHiddenApiPolicyError": True,  # 忽略 Android 9+ 的隐藏 API 限制警告
+            "appium:ensureWebviewsHavePages": True,  # 确保 Webview 页面加载时不会报空错误
+            "appium:nativeWebScreenshot": True,  # 截屏时启用原生方式
+            "appium:newCommandTimeout": 3600,  # 会话超时时间（秒）
+            # "appium:noReset": True,  # 不清除应用数据和缓存，保留应用状态
+            "appium:skipInstall": True  # 跳过应用安装步骤（假设应用已经安装在设备上）
         })
 
 
