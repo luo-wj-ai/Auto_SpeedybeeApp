@@ -9,6 +9,11 @@
         "comment": "进入OSD页面"
       },
       {
+        "action": "time",
+        "duration": 5,
+        "comment": "等待 5 秒,进入OSD页面十分卡顿"
+      },
+      {
         "action": "swipe",
         "start_x_proportion": 0.436,
         "start_y_proportion": 0.898,
@@ -28,16 +33,16 @@
       },
       {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
+        "appby": "XPATH",
         "cond": "el",
-        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(6)",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"电池平均单芯电压\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
         "comment": "开启电池平均单芯电压显示"
       },
       {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
+        "appby": "XPATH",
         "cond": "el",
-        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(5)",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"电池已消耗毫安数\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
         "comment": "开启电池已消耗毫安数显示"
       },
       {
@@ -51,9 +56,9 @@
       },
       {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
+        "appby": "XPATH",
         "cond": "el",
-        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(5)",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"反乌龟箭头\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
         "comment": "开启反乌龟箭头显示"
       },
       {
@@ -85,9 +90,9 @@
       },
       {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
+        "appby": "XPATH",
         "cond": "el",
-        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(13)",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"海拔高度\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
         "comment": "开启海拔高度显示（保留1位小数）"
       },
       {
@@ -101,16 +106,16 @@
       },
       {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
+        "appby": "XPATH",
         "cond": "el",
-        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(12)",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"黑盒日志状态\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
         "comment": "开启黑盒日志状态显示"
       },
       {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
+        "appby": "XPATH",
         "cond": "el",
-        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(13)",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"计时器2\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
         "comment": "开启计时器2显示"
       },
       {
@@ -133,31 +138,24 @@
       },
       {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
+        "appby": "XPATH",
         "cond": "el",
-        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(18)",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"计时器预估剩余时间\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
         "comment": "开启计时器预估剩余时间显示"
       },
       {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
+        "appby": "XPATH",
         "cond": "el",
-        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(17)",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"实时电流\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
         "comment": "开启实时电流显示"
       },
       {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
+        "appby": "XPATH",
         "cond": "el",
-        "ele": "new UiSelector().className(\"android.widget.LinearLayout\").instance(62)",
-        "comment": "开启图传频道-VTX显示"
-      },
-      {
-        "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
-        "cond": "el",
-        "ele": "new UiSelector().text(\"图传功率\")",
-        "comment": "开启TX上行功率显示"
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"图传频道\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
+        "comment": "开启图传频道"
       },
       {
         "action": "swipe",
@@ -170,40 +168,17 @@
       },
       {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
+        "appby": "XPATH",
         "cond": "el",
-        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(1)",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"G力\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
         "comment": "开启G力显示"
       },
       {
-        "action": "swipe",
-        "start_x_proportion": 0.416,
-        "start_y_proportion": 0.782,
-        "end_x_proportion": 0.432,
-        "end_y_proportion": 0.632,
-        "duration": 500,
-        "comment": "滑动以显示更多OSD选项（11）"
-      },
-      {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
+        "appby": "XPATH",
         "cond": "el",
-        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(5)",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"RSSI值\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
         "comment": "开启RSSI值显示"
-      },
-      {
-        "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
-        "cond": "el",
-        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(7)",
-        "comment": "开启TX上行功率显示"
-      },
-      {
-        "action": "click",
-        "appby": "ID",
-        "cond": "el",
-        "ele": "com.runcam.android.runcambf:id/save_btn",
-        "comment": "保存OSD设置"
       },
       {
         "action": "click",

@@ -6,7 +6,6 @@ import logging
 from datetime import datetime
 
 import coloredlogs
-from adodbapi.examples.xls_read import driver
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
 import selenium.webdriver.support.expected_conditions as Ec
@@ -304,3 +303,4 @@ def execute_actions(json_data_or_file, driver, act_name, group="default"):
             # 如果动作执行失败，记录错误日志并中止后续动作
             logging.error(f"Action {action.get('action')} failed")
             break
+

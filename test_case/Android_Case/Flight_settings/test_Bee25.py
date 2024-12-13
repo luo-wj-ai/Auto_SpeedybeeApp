@@ -71,7 +71,8 @@ class test_Bee25(unittest.TestCase):
             # 实例化 Android_Common_Step，只需执行一次
             cls.android_steps = Android_Common_Step(cls.driver)
             # 打开专家模式
-            cls.android_steps.Open_expert_mode()
+            # cls.android_steps.Open_expert_mode()
+        pass
 
     def setUp(self):
         test_Bee25.setUp_count += 1
@@ -90,7 +91,7 @@ class test_Bee25(unittest.TestCase):
         # # 调用文件比较逻辑进行断言
         # cls.assert_compare_files_logic(cli_file_path, win_cli_file_path, cls.use_contains_assert, cls.sequence_to_check)
         # print("正在关闭 driver...")
-        # cls.android_steps.end_break()  # 执行关闭操作
+        cls.android_steps.end_break()  # 执行关闭操作
         pass
 
     def test_01_Setup(self):
@@ -113,11 +114,12 @@ class test_Bee25(unittest.TestCase):
         """接收机"""
         self.execute_actions("ReceiverAct.json", self.driver, act_name="ReceiverAct", group="action1")
 
-    def test_06_Osd(self):
+    # @unittest.skip("OSD页面有点复杂需要重新研究策略")
+    def test_07_Osd(self):
         """OSD"""
         self.execute_actions("OsdAct.json", self.driver, act_name="OsdAct", group="action1")
 
-    def test_07_Vtx(self):
+    def test_06_Vtx(self):
         """VTX"""
         self.execute_actions("VtxAct.json", self.driver, act_name="VtxAct", group="action1")
 

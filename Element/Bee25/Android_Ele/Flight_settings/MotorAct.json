@@ -31,9 +31,9 @@
       },
       {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
+        "appby": "XPATH",
         "cond": "el",
-        "ele": "new UiSelector().className(\"android.view.View\").instance(5)",
+        "ele": "//android.widget.FrameLayout[@resource-id=\"com.runcam.android.runcambf:id/flutter_container\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[3]",
         "comment": "点击特定视图"
       },
       {

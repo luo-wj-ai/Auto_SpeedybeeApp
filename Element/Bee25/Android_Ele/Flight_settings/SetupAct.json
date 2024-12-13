@@ -10,7 +10,7 @@
       },
       {
         "action": "click",
-        "appby": "ACCESSIBILITY_ID",
+        "appby": "ID",
         "cond": "el",
         "ele": "com.runcam.android.runcambf:id/calibrate_accelerometer_btn",
         "comment": "点击校准加速度计"
