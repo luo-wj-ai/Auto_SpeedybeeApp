@@ -1,0 +1,20 @@
+{
+  "ReceiverAct": {
+    "action1": [
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/receiver_icon",
+        "comment": "点击接收机图标"
+      },
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/save_and_reboot_btn",
+        "comment": "点击保存并重启按钮"
+      }
+    ]
+  }
+}

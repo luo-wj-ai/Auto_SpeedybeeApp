@@ -15,6 +15,10 @@ class Common_Step(ABC):
         """连接打开专家模式"""
         pass
 
+    @abstractmethod
+    def Open_expert_mode02(self):
+        """已经在速览页里面进行测试，点击专家模式即可"""
+        pass
 
     @abstractmethod
     def enter_CLI_mode(self):
@@ -53,12 +57,12 @@ class Android_Common_Step(Common_Step):
                     {"action": "click", "appby": "XPATH", "ele": "//android.widget.Button[@content-desc='跳过']",
                      "cond": "el", "comment": "跳过密码"},
                     {"action": "time", "duration": 5, "comment": "因为了解缓慢，所以等待5秒"},
-                    # {
-                    #     "action": "tap",
-                    #     "x_proportion": 0.8754098,
-                    #     "y_proportion": 0.9188134,
-                    #     "comment": "点击屏幕中间小蒙层提示LED"
-                    # },
+                    {
+                        "action": "tap",
+                        "x_proportion": 0.8754098,
+                        "y_proportion": 0.9188134,
+                        "comment": "点击屏幕中间小蒙层提示LED"
+                    },
                     {"action": "click", "appby": "XPATH", "ele": "//android.widget.Button[@content-desc='专家模式']",
                      "cond": "el", "comment": "点击专家模式"},
                     {"action": "time", "duration": 2, "comment": "等待2秒"}
@@ -67,6 +71,20 @@ class Android_Common_Step(Common_Step):
         }
         # 调用 execute_actions_from_json 方法，并传入动作数据和其它参数
         execute_actions(actions, self.driver, act_name="Open_expert_mode", group="default")
+
+    def Open_expert_mode02(self):
+        """已经在速览页里面进行测试，点击专家模式即可"""
+        actions = {
+            "Open_expert_mode02": {
+                "default": [
+                    {"action": "click", "appby": "XPATH", "ele": "//android.widget.Button[@content-desc='专家模式']",
+                     "cond": "el", "comment": "点击专家模式"},
+                    {"action": "time", "duration": 2, "comment": "等待2秒"}
+                ]
+            }
+        }
+        # 调用 execute_actions_from_json 方法，并传入动作数据和其它参数
+        execute_actions(actions, self.driver, act_name="Open_expert_mode02", group="default")
 
     def  end_break(self):
         """断开飞控连接，并且结束driver"""

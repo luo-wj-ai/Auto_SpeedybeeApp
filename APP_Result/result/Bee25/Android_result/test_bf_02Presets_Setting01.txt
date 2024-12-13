@@ -1,0 +1,36 @@
+b"Entering CLI Mode, type 'exit' to return, or 'help'
+
+#
+
+#diff
+
+# version
+# Betaflight / STM32F405 (S405) 4.5.0 Sep  3 2024 / 10:14:34 (norevision) MSP API: 1.46
+
+# start the command batch
+batch start
+
+board_name SPEEDYBEEBEE25
+manufacturer_id SPBE
+
+
+# feature
+feature SERVO_TILT
+feature TELEMETRY
+feature LED_STRIP
+feature OSD
+feature CHANNEL_FORWARDING
+
+# master
+set osd_warnings_pos = 14740
+set osd_canvas_height = 13
+profile 0
+
+rateprofile 0
+
+# end the command batch
+batch end
+
+# 
+
+"

@@ -1,0 +1,20 @@
+{
+  "ConfigureAct": {
+    "action1": [
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/configuration_icon",
+        "comment": "点击配置图标"
+      },
+      {
+        "action": "click",
+        "appby": "ACCESSIBILITY_ID",
+        "cond": "el",
+        "ele": "保存并重启",
+        "comment": "点击保存并重启"
+      }
+    ]
+  }
+}

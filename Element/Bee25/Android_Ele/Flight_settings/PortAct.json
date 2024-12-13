@@ -1,0 +1,75 @@
+{
+  "PortAct":{
+    "action1":[
+      {
+        "action":"click",
+        "appby":"ID",
+        "cond":"el",
+        "ele":"com.runcam.android.runcambf:id/ports_icon",
+        "comment":"点击端口图标"
+      },
+      {
+        "action":"click",
+        "appby":"ANDROID_UIAUTOMATOR",
+        "cond":"el",
+        "ele":"new UiSelector().resourceId(\"com.runcam.android.runcambf:id/blackbox_name\").instance(1)",
+        "comment":"点击外围设备"
+      },
+      {
+        "action":"swipe",
+        "start_x_proportion":0.9,
+        "start_y_proportion":0.548,
+        "end_x_proportion":0.213,
+        "end_y_proportion":0.549,
+        "duration":500,
+        "comment":"从右向左滑动"
+      },
+      {
+        "action":"swipe",
+        "start_x_proportion":0.913,
+        "start_y_proportion":0.556,
+        "end_x_proportion":0.195,
+        "end_y_proportion":0.549,
+        "duration":500,
+        "comment":"再次从右向左滑动"
+      },
+      {
+        "action":"click",
+        "appby":"ANDROID_UIAUTOMATOR",
+        "cond":"el",
+        "ele":"new UiSelector().text(\"VTX(MSP + Displayport)\")",
+        "comment":"点击VTX(MSP + Displayport)"
+      },
+      {
+        "action":"swipe",
+        "start_x_proportion":0.539,
+        "start_y_proportion":0.825,
+        "end_x_proportion":0.535,
+        "end_y_proportion":0.381,
+        "duration":500,
+        "comment":"从底部向上滑动"
+      },
+      {
+        "action":"click",
+        "appby":"ANDROID_UIAUTOMATOR",
+        "cond":"el",
+        "ele":"new UiSelector().resourceId(\"com.runcam.android.runcambf:id/gps_name\").instance(2)",
+        "comment":"点击GPS名称"
+      },
+      {
+        "action":"click",
+        "appby":"ANDROID_UIAUTOMATOR",
+        "cond":"el",
+        "ele":"new UiSelector().text(\"GPS\").instance(2)",
+        "comment":"点击GPS"
+      },
+      {
+        "action":"click",
+        "appby":"ID",
+        "cond":"el",
+        "ele":"com.runcam.android.runcambf:id/save_btn",
+        "comment":"点击保存按钮"
+      }
+    ]
+  }
+}

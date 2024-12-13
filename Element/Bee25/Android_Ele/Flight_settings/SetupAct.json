@@ -1,0 +1,20 @@
+{
+  "SetupAct": {
+    "action1": [
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "//android.widget.ImageView[@resource-id=\"com.runcam.android.runcambf:id/setup_icon\"]",
+        "comment": "点击设置"
+      },
+      {
+        "action": "click",
+        "appby": "ACCESSIBILITY_ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/calibrate_accelerometer_btn",
+        "comment": "点击校准加速度计"
+      }
+    ]
+  }
+}

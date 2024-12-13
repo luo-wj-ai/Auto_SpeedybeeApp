@@ -47,7 +47,7 @@ class AndroidAppDriver(AppDriverBase):
             "appium:ensureWebviewsHavePages": True,  # 确保 Webview 页面加载时不会报空错误
             "appium:nativeWebScreenshot": True,  # 截屏时启用原生方式
             "appium:newCommandTimeout": 3600,  # 会话超时时间（秒）
-            # "appium:noReset": True,  # 不清除应用数据和缓存，保留应用状态
+            "appium:noReset": True,  # 不清除应用数据和缓存，保留应用状态
             "appium:skipInstall": True  # 跳过应用安装步骤（假设应用已经安装在设备上）
         })
 

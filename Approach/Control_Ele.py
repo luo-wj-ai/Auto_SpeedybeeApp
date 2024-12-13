@@ -1,7 +1,12 @@
+import os
+import re
 import time
 import json
 import logging
+from datetime import datetime
+
 import coloredlogs
+from adodbapi.examples.xls_read import driver
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
 import selenium.webdriver.support.expected_conditions as Ec
@@ -28,13 +33,14 @@ def parse_json(json_file, act_name=None, group=None):
 class AppiumHelper:
     """封装 Appium 常用操作"""
 
-    def __init__(self, driver, timeout=5):
+    def __init__(self, driver, timeout=6):
         self.driver = driver
         self.wait = WebDriverWait(driver, timeout)
         self.locators = {
             'ID': AppiumBy.ID,
             'XPATH': AppiumBy.XPATH,
             'ACCESSIBILITY_ID': AppiumBy.ACCESSIBILITY_ID,
+            'ANDROID_UIAUTOMATOR': AppiumBy.ANDROID_UIAUTOMATOR,
             'NAME': AppiumBy.NAME
         }
         self.conditions = {
@@ -129,9 +135,24 @@ class AppiumHelper:
         logging.info(f"Tapped at position: (x={x}, y={y}) - {comment}")
         return True
 
-    def _swipe(self, start_x, start_y, end_x, end_y, duration=100, comment=""):
-        """屏幕滑动操作"""
+    def _swipe(self, start_x_proportion, start_y_proportion, end_x_proportion, end_y_proportion, duration=100,
+               comment=""):
+        """屏幕滑动操作，支持按屏幕比例计算坐标"""
+        # 获取屏幕尺寸
+        size = self.driver.get_window_size()
+        width, height = size['width'], size['height']
+
+        # 计算滑动的实际坐标
+        start_x = int(width * start_x_proportion)
+        start_y = int(height * start_y_proportion)
+        end_x = int(width * end_x_proportion)
+        end_y = int(height * end_y_proportion)
+
+        # 执行滑动操作
         self.driver.swipe(start_x, start_y, end_x, end_y, duration)
+
+        # 打印屏幕尺寸、滑动比例和实际坐标
+        logging.info(f"Screen size: width={width}, height={height}")
         logging.info(f"Swiped from ({start_x}, {start_y}) to ({end_x}, {end_y}) - {comment}")
         return True
 
@@ -164,15 +185,60 @@ class AppiumHelper:
             self._log_error(f"Error during rolling - {comment}", e)
             return False
 
-    def _wait_and_get_element(self, appby, cond, ele):
-        """通用元素获取方法"""
+    import os
+    import re
+    from datetime import datetime
+
+    def save_element_screenshot(self, ele, folder="screenshots"):
+        """
+        保存未捕获元素的截图
+
+        参数:
+        - ele: 未捕获的元素名称，用于命名截图
+        - folder: 保存截图的文件夹路径，相对于当前文件目录的上一层目录
+
+        返回:
+        - 截图保存的完整路径
+        """
+        # 获取当前文件目录的上一层目录
+        parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+        # 拼接截图保存的文件夹路径
+        screenshot_dir = os.path.join(parent_dir, folder)
+        os.makedirs(screenshot_dir, exist_ok=True)  # 如果文件夹不存在则创建
+
+        # 构造时间戳和安全的文件名
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        sanitized_ele = re.sub(r'[\\/:*?"<>|]', '_', ele)[:50]  # 替换非法字符并限制长度
+        file_name = f"{timestamp}_{sanitized_ele}_未捕获.png"
+
+        # 拼接完整路径
+        screenshot_path = os.path.join(screenshot_dir, file_name)
+
+        # 保存截图
         try:
+            self.driver.save_screenshot(screenshot_path)
+            logging.info(f"Screenshot saved: {screenshot_path}")
+        except Exception as e:
+            logging.error(f"Failed to save screenshot: {e}")
+
+        return screenshot_path
+
+    def _wait_and_get_element(self, appby, cond, ele):
+        """通用元素获取方法，支持失败时截图"""
+        try:
+            # 获取条件和定位器
             condition, locator, ele = self._get_condition_and_locator(appby, cond, ele)
             self.wait.until(condition((locator, ele)))
             return self.driver.find_element(locator, ele)
         except (NoSuchElementException, TimeoutException) as e:
+            # 记录错误日志
             self._log_error(f"Element not found: {ele}", e)
-        return None
+
+            # 调用独立的截图方法
+            self.save_element_screenshot(ele)
+
+            return None
 
 
 def execute_actions(json_data_or_file, driver, act_name, group="default"):
@@ -217,7 +283,8 @@ def execute_actions(json_data_or_file, driver, act_name, group="default"):
         "keys",  # 输入框中的文本
         "duration",  # 持续时间
         "x_proportion", "y_proportion",  # 点击位置的比例
-        "start_x", "start_y", "end_x", "end_y",  # 滑动坐标
+        "start_x_proportion", "start_y_proportion",  # 滑动起点比例
+        "end_x_proportion", "end_y_proportion",  # 滑动终点比例
         "start_locator_type",  # 滚动起点的定位器类型
         "start_locator",  # 滚动起点的定位器值
         "end_locator_type",  # 滚动终点的定位器类型
