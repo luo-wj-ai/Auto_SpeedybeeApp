@@ -4,7 +4,6 @@ import time
 import json
 import logging
 from datetime import datetime
-
 import coloredlogs
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
@@ -65,7 +64,9 @@ class AppiumHelper:
         return condition, locator, ele
 
     def perform_action(self, action, **kwargs):
-        """执行单一动作"""
+        """
+        执行单一动作
+        """
         actions = {
             'click': self._click,
             'sendkeys': self._send_keys,
@@ -73,7 +74,7 @@ class AppiumHelper:
             'time': self._sleep,
             'tap': self._tap,
             'swipe': self._swipe,
-            'rolling': self._rolling
+            'rolling': self._rolling,
         }
         try:
             method = actions.get(action)
@@ -184,9 +185,7 @@ class AppiumHelper:
             self._log_error(f"Error during rolling - {comment}", e)
             return False
 
-    import os
-    import re
-    from datetime import datetime
+
 
     def save_element_screenshot(self, ele, folder="screenshots"):
         """
@@ -240,7 +239,7 @@ class AppiumHelper:
             return None
 
 
-def execute_actions(json_data_or_file, driver, act_name, group="default"):
+def execute_actions(json_data_or_file, driver, act_name, group="default", testcase=None):
     """
     从 JSON 数据或 JSON 文件中解析并执行指定的动作序列。
 
@@ -249,9 +248,7 @@ def execute_actions(json_data_or_file, driver, act_name, group="default"):
         driver (WebDriver)：Appium 的 WebDriver 实例，用于执行动作。
         act_name (str)：指定的动作组名称。
         group (str)：指定子组名称，默认为 "default"。
-
-    作用：
-        按照指定的 JSON 格式描述的动作序列，依次调用 Appium 操作进行执行。
+        testcase (unittest.TestCase)：unittest 测试实例，用于在失败时调用 fail()（可选）。
 
     返回：
         None
@@ -266,9 +263,11 @@ def execute_actions(json_data_or_file, driver, act_name, group="default"):
         # 从 JSON 数据中获取指定动作组和子组的动作列表
         json_data = json_data_or_file.get(act_name, {}).get(group, [])
 
-    # 如果未找到任何动作数据，记录错误日志并退出
     if not json_data:
-        logging.error(f"No actions found for group {group} in {act_name}")
+        error_msg = f"No actions found for group {group} in {act_name}"
+        logging.error(error_msg)
+        if testcase:  # 如果传递了 testcase，则调用 fail()
+            testcase.fail(error_msg)
         return
 
     # 初始化 AppiumHelper 工具类，用于封装常用的 Appium 操作
@@ -295,12 +294,22 @@ def execute_actions(json_data_or_file, driver, act_name, group="default"):
     for action in json_data:
         # 过滤掉动作中无效的字段，只保留有效的键值对
         filtered_action = {k: v for k, v in action.items() if k in valid_keys}
-        # 日志记录当前正在执行的动作类型及其注释信息————先注释了
-        # logging.info(f"Executing action: {action.get('action')} - {action.get('comment', '')}")
 
-        # 调用 AppiumHelper 的方法执行动作
-        if not helper.perform_action(**filtered_action):
-            # 如果动作执行失败，记录错误日志并中止后续动作
-            logging.error(f"Action {action.get('action')} failed")
+        try:
+            # 调用 AppiumHelper 的方法执行动作
+            if not helper.perform_action(**filtered_action):
+                error_msg = f"Action {action.get('action')} failed: {action.get('comment', '')}"
+                logging.error(error_msg)
+                if testcase:  # 如果传递了 testcase，则调用 fail()
+                    testcase.fail(error_msg)
+                break
+        except Exception as e:
+            # 捕获异常，记录日志并标记测试失败
+            error_msg = f"Exception during action execution: {e}"
+            logging.error(error_msg)
+            if testcase:  # 如果传递了 testcase，则调用 fail()
+                testcase.fail(error_msg)
             break
+
+
 

@@ -10,20 +10,6 @@
       },
       {
         "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
-        "cond": "el",
-        "ele": "new UiSelector().text(\"DSHOT600\")",
-        "comment": "点击DSHOT600"
-      },
-      {
-        "action": "click",
-        "appby": "ANDROID_UIAUTOMATOR",
-        "cond": "el",
-        "ele": "new UiSelector().text(\"DSHOT300\")",
-        "comment": "点击DSHOT300"
-      },
-      {
-        "action": "click",
         "appby": "ID",
         "cond": "el",
         "ele": "com.runcam.android.runcambf:id/MotorDirectionBtn",

@@ -12,7 +12,7 @@
         "action": "click",
         "appby": "ANDROID_UIAUTOMATOR",
         "cond": "el",
-        "ele": "new UiSelector().className(\"android.view.View\").instance(75)",
+        "ele": "new UiSelector().className(\"android.view.View\").instance(71)",
         "comment": "点击特定视图元素75"
       },
       {

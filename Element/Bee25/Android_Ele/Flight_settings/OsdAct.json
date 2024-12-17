@@ -13,172 +13,49 @@
         "duration": 5,
         "comment": "等待 5 秒,进入OSD页面十分卡顿"
       },
-      {
-        "action": "swipe",
-        "start_x_proportion": 0.436,
-        "start_y_proportion": 0.898,
-        "end_x_proportion": 0.453,
-        "end_y_proportion": 0.519,
-        "duration": 500,
-        "comment": "滑动以显示更多OSD选项（1）"
-      },
-      {
-        "action": "swipe",
-        "start_x_proportion": 0.436,
-        "start_y_proportion": 0.824,
-        "end_x_proportion": 0.463,
-        "end_y_proportion": 0.502,
-        "duration": 500,
-        "comment": "滑动以显示更多OSD选项（2）"
+       {
+        "action": "click",
+        "appby": "ANDROID_UIAUTOMATOR",
+        "cond": "el",
+        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(1)",
+        "comment": "点击第1个element_switch按钮"
       },
       {
         "action": "click",
-        "appby": "XPATH",
+        "appby": "ANDROID_UIAUTOMATOR",
         "cond": "el",
-        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"电池平均单芯电压\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
-        "comment": "开启电池平均单芯电压显示"
+        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(11)",
+        "comment": "点击第11个element_switch按钮"
       },
       {
         "action": "click",
-        "appby": "XPATH",
+        "appby": "ANDROID_UIAUTOMATOR",
         "cond": "el",
-        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"电池已消耗毫安数\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
-        "comment": "开启电池已消耗毫安数显示"
+        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(13)",
+        "comment": "点击第13个element_switch按钮"
       },
       {
-        "action": "swipe",
-        "start_x_proportion": 0.469,
-        "start_y_proportion": 0.48,
-        "end_x_proportion": 0.455,
-        "end_y_proportion": 0.914,
-        "duration": 500,
-        "comment": "滑动以显示更多OSD选项（3）"
+        "action": "rolling",
+        "start_locator_type": "XPATH",
+        "start_locator": "(//android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"])[15]",
+        "end_locator_type": "XPATH",
+        "end_locator": "(//android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"])[1]",
+        "cond": "el",
+        "comment": "从起点滚动到终点"
       },
       {
         "action": "click",
-        "appby": "XPATH",
+        "appby": "ANDROID_UIAUTOMATOR",
         "cond": "el",
-        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"反乌龟箭头\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
-        "comment": "开启反乌龟箭头显示"
-      },
-      {
-        "action": "swipe",
-        "start_x_proportion": 0.477,
-        "start_y_proportion": 0.887,
-        "end_x_proportion": 0.482,
-        "end_y_proportion": 0.482,
-        "duration": 500,
-        "comment": "滑动以显示更多OSD选项（4）"
-      },
-      {
-        "action": "swipe",
-        "start_x_proportion": 0.458,
-        "start_y_proportion": 0.854,
-        "end_x_proportion": 0.446,
-        "end_y_proportion": 0.6,
-        "duration": 500,
-        "comment": "滑动以显示更多OSD选项（5）"
-      },
-      {
-        "action": "swipe",
-        "start_x_proportion": 0.413,
-        "start_y_proportion": 0.87,
-        "end_x_proportion": 0.405,
-        "end_y_proportion": 0.639,
-        "duration": 500,
-        "comment": "滑动以显示更多OSD选项（6）"
+        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(5)",
+        "comment": "点击第5个element_switch按钮"
       },
       {
         "action": "click",
-        "appby": "XPATH",
+        "appby": "ANDROID_UIAUTOMATOR",
         "cond": "el",
-        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"海拔高度\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
-        "comment": "开启海拔高度显示（保留1位小数）"
-      },
-      {
-        "action": "swipe",
-        "start_x_proportion": 0.466,
-        "start_y_proportion": 0.473,
-        "end_x_proportion": 0.471,
-        "end_y_proportion": 0.821,
-        "duration": 500,
-        "comment": "滑动以显示更多OSD选项（7）"
-      },
-      {
-        "action": "click",
-        "appby": "XPATH",
-        "cond": "el",
-        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"黑盒日志状态\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
-        "comment": "开启黑盒日志状态显示"
-      },
-      {
-        "action": "click",
-        "appby": "XPATH",
-        "cond": "el",
-        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"计时器2\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
-        "comment": "开启计时器2显示"
-      },
-      {
-        "action": "swipe",
-        "start_x_proportion": 0.474,
-        "start_y_proportion": 0.518,
-        "end_x_proportion": 0.466,
-        "end_y_proportion": 0.776,
-        "duration": 500,
-        "comment": "滑动以显示更多OSD选项（8）"
-      },
-      {
-        "action": "swipe",
-        "start_x_proportion": 0.429,
-        "start_y_proportion": 0.569,
-        "end_x_proportion": 0.445,
-        "end_y_proportion": 0.871,
-        "duration": 500,
-        "comment": "滑动以显示更多OSD选项（9）"
-      },
-      {
-        "action": "click",
-        "appby": "XPATH",
-        "cond": "el",
-        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"计时器预估剩余时间\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
-        "comment": "开启计时器预估剩余时间显示"
-      },
-      {
-        "action": "click",
-        "appby": "XPATH",
-        "cond": "el",
-        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"实时电流\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
-        "comment": "开启实时电流显示"
-      },
-      {
-        "action": "click",
-        "appby": "XPATH",
-        "cond": "el",
-        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"图传频道\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
-        "comment": "开启图传频道"
-      },
-      {
-        "action": "swipe",
-        "start_x_proportion": 0.471,
-        "start_y_proportion": 0.463,
-        "end_x_proportion": 0.482,
-        "end_y_proportion": 0.919,
-        "duration": 500,
-        "comment": "滑动以显示更多OSD选项（10）"
-      },
-      {
-        "action": "click",
-        "appby": "XPATH",
-        "cond": "el",
-        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"G力\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
-        "comment": "开启G力显示"
-      },
-      {
-        "action": "click",
-        "appby": "XPATH",
-        "cond": "el",
-        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/element_desc\" and @text=\"RSSI值\"]/../../android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"]",
-        "comment": "开启RSSI值显示"
+        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(13)",
+        "comment": "再次点击第13个element_switch按钮"
       },
       {
         "action": "click",

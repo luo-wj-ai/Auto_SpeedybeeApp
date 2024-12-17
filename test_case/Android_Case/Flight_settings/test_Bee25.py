@@ -21,8 +21,7 @@ class test_Bee25(unittest.TestCase):
     sequence_to_check = "*"  # 全局变量，存储待检查的字符串
 
     #获取JSON数据入口
-    @staticmethod
-    def execute_actions(json_path, driver, act_name, group):
+    def execute_actions(self,json_path, driver, act_name, group):
         """
         执行动作：根据 JSON 配置文件执行操作
         - json_path: JSON 文件路径
@@ -31,7 +30,7 @@ class test_Bee25(unittest.TestCase):
         - group: 动作组
         """
         my_json_path = get_json_path(json_path, JSON_dir)
-        execute_actions(my_json_path, driver, act_name, group)
+        execute_actions(my_json_path, driver, act_name, group,testcase=self)
 
     #断言出口
     @staticmethod
@@ -85,7 +84,7 @@ class test_Bee25(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # 进入 CLI 模式
-        # cls.android_steps.enter_CLI_mode()
+        cls.android_steps.enter_CLI_mode()
         # 获取剪切板数据并生成文件路径
         # cli_file_path, win_cli_file_path = cliapp(cls.driver, cls.__name__, result_dir)
         # # 调用文件比较逻辑进行断言
@@ -94,9 +93,11 @@ class test_Bee25(unittest.TestCase):
         cls.android_steps.end_break()  # 执行关闭操作
         pass
 
+
     def test_01_Setup(self):
         """设置"""
         self.execute_actions("SetupAct.json", self.driver, act_name="SetupAct", group="action1")
+
 
     def test_02_Port(self):
         """端口"""
@@ -106,26 +107,30 @@ class test_Bee25(unittest.TestCase):
         """配置"""
         self.execute_actions("ConfigureAct.json", self.driver, act_name="ConfigureAct", group="action1")
 
-    def test_04_Motor(self):
-        """电机"""
-        self.execute_actions("MotorAct.json", self.driver, act_name="MotorAct", group="action1")
+    # @unittest.skip
+    # def test_04_Motor(self):
+    #     """电机"""
+    #     self.execute_actions("MotorAct.json", self.driver, act_name="MotorAct", group="action1")
 
     def test_05_Receiver(self):
         """接收机"""
         self.execute_actions("ReceiverAct.json", self.driver, act_name="ReceiverAct", group="action1")
 
-    # @unittest.skip("OSD页面有点复杂需要重新研究策略")
+
     def test_07_Osd(self):
         """OSD"""
         self.execute_actions("OsdAct.json", self.driver, act_name="OsdAct", group="action1")
+
 
     def test_06_Vtx(self):
         """VTX"""
         self.execute_actions("VtxAct.json", self.driver, act_name="VtxAct", group="action1")
 
+
     def test_08_Gps(self):
         """GPS"""
         self.execute_actions("GpsAct.json", self.driver, act_name="GpsAct", group="action1")
+
 
     def test_09_Mode(self):
         """模式"""

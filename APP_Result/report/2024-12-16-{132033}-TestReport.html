@@ -7159,123 +7159,147 @@ body.skin-3 {
 
 
     var resultData = {
-    "testPass": 3,
+    "testPass": 0,
     "testResult": [
         {
-            "className": "Test_bf_01Setup",
-            "methodName": "test_bf_01Setup_Setting01",
-            "description": "恢复默认设置",
-            "spendTime": "95.1 s",
-            "status": "成功",
-            "log": [
-                "第 1 次测试用例已开始：—————————————— Test_bf_01Setup.test_bf_01Setup_Setting01——————————————————————",
-                "\u001b[32m2024-12-03 18:04:53\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Loading JSON file: D:\\Automation\\SpeedybeeApp\\Element/F405_AIO/Android_Ele/BF\\SetupAct.json",
-                "\u001b[32m2024-12-03 18:05:02\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.LinearLayout[@resource-id=\"com.runcam.android.runcambf:id/more_button_btn\"] - 点击更多",
-                "\u001b[32m2024-12-03 18:05:12\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/reset_settings_btn\"] - 点击恢复默认设置",
-                "\u001b[32m2024-12-03 18:05:13\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/submmit_btn\"] - 点击重置",
-                "\u001b[32m2024-12-03 18:05:17\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Using provided JSON data",
-                "\u001b[32m2024-12-03 18:05:30\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Rolled from //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/battery_icon'] to //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/configuration_icon'] - 滑动到页面最底部",
-                "\u001b[32m2024-12-03 18:05:36\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/cli_icon'] - 点击CLI页面",
-                "\u001b[32m2024-12-03 18:05:40\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/cli_icon'] - 因为CLI页面还有BUG，需要进入两次",
-                "\u001b[32m2024-12-03 18:05:46\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sent keys to element: //android.widget.AutoCompleteTextView[@resource-id='com.runcam.android.runcambf:id/send_content'] - 输入diff命令",
-                "\u001b[32m2024-12-03 18:05:51\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.TextView[@resource-id='com.runcam.android.runcambf:id/send_btn'] - 点击发送",
-                "\u001b[32m2024-12-03 18:05:51\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sleeping for 1 seconds - 等待1秒",
-                "\u001b[32m2024-12-03 18:05:58\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/copy_btn'] - 点击复制按钮——复制到剪切板存放",
-                "\u001b[32m2024-12-03 18:06:03\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sent keys to element: //android.widget.AutoCompleteTextView[@resource-id='com.runcam.android.runcambf:id/send_content'] - 输入defaults命令",
-                "\u001b[32m2024-12-03 18:06:08\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.TextView[@resource-id='com.runcam.android.runcambf:id/send_btn'] - 点击发送",
-                "\u001b[32m2024-12-03 18:06:18\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Rolled from //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/configuration_icon'] to //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/battery_icon'] - 滑动到页面最顶部",
-                "\u001b[32m2024-12-03 18:06:23\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/setup_icon'] - 点击设置页面——主要是为了退出飞控的CLI页面",
-                "\u001b[32m2024-12-03 18:06:23\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sleeping for 2 seconds - 等待2秒",
-                "剪切板数据已写入文件：D:\\Automation\\SpeedybeeApp\\APP_Result/result/F405_AIO/Android_result\\test_bf_01Setup_Setting01.txt",
-                ""
-            ]
-        },
-        {
-            "className": "Test_bf_01Setup",
-            "methodName": "test_bf_02Presets_Setting01",
-            "description": "选择固件4.5-an进行预设 ",
+            "className": "test_Bee25",
+            "methodName": "test_01_Setup",
+            "description": "设置",
             "spendTime": "0.0 s",
             "status": "跳过",
             "log": [
-                "跳过这个测试"
-            ]
-        },
-        {
-            "className": "Test_bf_01Setup",
-            "methodName": "test_bf_03Port_Setting01",
-            "description": "打开UART2-MSP<br/>UART3-串行接收机<br/>UART4-FrSky",
-            "spendTime": "1.33e+02 s",
-            "status": "成功",
-            "log": [
-                "第 2 次测试用例已开始：—————————————— Test_bf_01Setup.test_bf_03Port_Setting01——————————————————————",
-                "\u001b[32m2024-12-03 18:06:28\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Loading JSON file: D:\\Automation\\SpeedybeeApp\\Element/F405_AIO/Android_Ele/BF\\PortAct.json",
-                "\u001b[32m2024-12-03 18:06:40\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id=\"com.runcam.android.runcambf:id/ports_icon\"] - 进入端口页面",
-                "\u001b[32m2024-12-03 18:06:50\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: (//android.widget.Switch[@resource-id=\"com.runcam.android.runcambf:id/msp_switch\"])[3] - 点击2-msp",
-                "\u001b[32m2024-12-03 18:06:56\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: (//android.widget.Switch[@resource-id=\"com.runcam.android.runcambf:id/rx_switch\"])[4] - 点击3-串行接收机",
-                "\u001b[32m2024-12-03 18:07:10\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Rolled from (//android.widget.Switch[@resource-id=\"com.runcam.android.runcambf:id/rx_switch\"])[4] to (//android.widget.Switch[@resource-id=\"com.runcam.android.runcambf:id/rx_switch\"])[2] - 滑动页面，元素找不到",
-                "\u001b[32m2024-12-03 18:07:19\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: (//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/telemetry_name\"])[3] - 点击4-遥测输出",
-                "\u001b[32m2024-12-03 18:07:25\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.TextView[@text=\"FrSky\"] - 选择4-FrSky",
-                "\u001b[32m2024-12-03 18:07:32\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/save_btn\"] - 点击保存并重启",
-                "\u001b[32m2024-12-03 18:07:36\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Using provided JSON data",
-                "\u001b[32m2024-12-03 18:07:51\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Rolled from //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/battery_icon'] to //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/configuration_icon'] - 滑动到页面最底部",
-                "\u001b[32m2024-12-03 18:07:57\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/cli_icon'] - 点击CLI页面",
-                "\u001b[32m2024-12-03 18:08:01\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/cli_icon'] - 因为CLI页面还有BUG，需要进入两次",
-                "\u001b[32m2024-12-03 18:08:07\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sent keys to element: //android.widget.AutoCompleteTextView[@resource-id='com.runcam.android.runcambf:id/send_content'] - 输入diff命令",
-                "\u001b[32m2024-12-03 18:08:11\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.TextView[@resource-id='com.runcam.android.runcambf:id/send_btn'] - 点击发送",
-                "\u001b[32m2024-12-03 18:08:11\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sleeping for 1 seconds - 等待1秒",
-                "\u001b[32m2024-12-03 18:08:16\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/copy_btn'] - 点击复制按钮——复制到剪切板存放",
-                "\u001b[32m2024-12-03 18:08:19\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sent keys to element: //android.widget.AutoCompleteTextView[@resource-id='com.runcam.android.runcambf:id/send_content'] - 输入defaults命令",
-                "\u001b[32m2024-12-03 18:08:24\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.TextView[@resource-id='com.runcam.android.runcambf:id/send_btn'] - 点击发送",
-                "\u001b[32m2024-12-03 18:08:32\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Rolled from //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/configuration_icon'] to //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/battery_icon'] - 滑动到页面最顶部",
-                "\u001b[32m2024-12-03 18:08:36\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/setup_icon'] - 点击设置页面——主要是为了退出飞控的CLI页面",
-                "\u001b[32m2024-12-03 18:08:36\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sleeping for 2 seconds - 等待2秒",
-                "剪切板数据已写入文件：D:\\Automation\\SpeedybeeApp\\APP_Result/result/F405_AIO/Android_result\\test_bf_03Port_Setting01.txt",
                 ""
             ]
         },
         {
-            "className": "Test_bf_01Setup",
-            "methodName": "test_bf_04Mode_Setting01",
-            "description": "添加前四个范围和前3个链接 ",
-            "spendTime": "1.19e+02 s",
-            "status": "成功",
+            "className": "test_Bee25",
+            "methodName": "test_02_Port",
+            "description": "端口",
+            "spendTime": "0.0 s",
+            "status": "跳过",
             "log": [
-                "第 3 次测试用例已开始：—————————————— Test_bf_01Setup.test_bf_04Mode_Setting01——————————————————————",
-                "\u001b[32m2024-12-03 18:08:41\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Loading JSON file: D:\\Automation\\SpeedybeeApp\\Element/F405_AIO/Android_Ele/BF\\ModeAct.json",
-                "\u001b[32m2024-12-03 18:08:50\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id=\"com.runcam.android.runcambf:id/modes_icon\"] - 进入模式页面",
-                "\u001b[32m2024-12-03 18:08:57\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: (//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_range_btn\"])[1] - 点击第0个添加范围",
-                "\u001b[32m2024-12-03 18:09:01\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: (//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_link_btn\"])[1] - 点击第1个添加链接",
-                "\u001b[32m2024-12-03 18:09:05\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: (//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_range_btn\"])[2] - 点击第1个添加范围",
-                "\u001b[32m2024-12-03 18:09:09\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: (//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_link_btn\"])[2] - 点击第2个添加链接",
-                "\u001b[32m2024-12-03 18:09:13\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: (//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_range_btn\"])[3] - 点击第2个添加范围",
-                "\u001b[32m2024-12-03 18:09:23\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Rolled from (//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_range_btn\"])[3] to (//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_range_btn\"])[2] - 滑动页面，元素找不到",
-                "\u001b[32m2024-12-03 18:09:29\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: (//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_link_btn\"])[2] - 点击第3个添加链接",
-                "\u001b[32m2024-12-03 18:09:33\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: (//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/add_range_btn\"])[2] - 点击第3个添加范围",
-                "\u001b[32m2024-12-03 18:09:37\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/save_btn\"] - 点击保存",
-                "\u001b[32m2024-12-03 18:09:41\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Using provided JSON data",
-                "\u001b[32m2024-12-03 18:09:50\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Rolled from //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/battery_icon'] to //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/configuration_icon'] - 滑动到页面最底部",
-                "\u001b[32m2024-12-03 18:09:55\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/cli_icon'] - 点击CLI页面",
-                "\u001b[32m2024-12-03 18:09:59\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/cli_icon'] - 因为CLI页面还有BUG，需要进入两次",
-                "\u001b[32m2024-12-03 18:10:04\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sent keys to element: //android.widget.AutoCompleteTextView[@resource-id='com.runcam.android.runcambf:id/send_content'] - 输入diff命令",
-                "\u001b[32m2024-12-03 18:10:08\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.TextView[@resource-id='com.runcam.android.runcambf:id/send_btn'] - 点击发送",
-                "\u001b[32m2024-12-03 18:10:08\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sleeping for 1 seconds - 等待1秒",
-                "\u001b[32m2024-12-03 18:10:13\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/copy_btn'] - 点击复制按钮——复制到剪切板存放",
-                "\u001b[32m2024-12-03 18:10:19\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sent keys to element: //android.widget.AutoCompleteTextView[@resource-id='com.runcam.android.runcambf:id/send_content'] - 输入defaults命令",
-                "\u001b[32m2024-12-03 18:10:23\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.TextView[@resource-id='com.runcam.android.runcambf:id/send_btn'] - 点击发送",
-                "\u001b[32m2024-12-03 18:10:31\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Rolled from //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/configuration_icon'] to //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/battery_icon'] - 滑动到页面最顶部",
-                "\u001b[32m2024-12-03 18:10:35\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.ImageView[@resource-id='com.runcam.android.runcambf:id/setup_icon'] - 点击设置页面——主要是为了退出飞控的CLI页面",
-                "\u001b[32m2024-12-03 18:10:35\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sleeping for 2 seconds - 等待2秒",
-                "剪切板数据已写入文件：D:\\Automation\\SpeedybeeApp\\APP_Result/result/F405_AIO/Android_result\\test_bf_04Mode_Setting01.txt",
+                ""
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_03_Configure",
+            "description": "配置",
+            "spendTime": "14.0 s",
+            "status": "失败",
+            "log": [
+                "第 1 次测试用例已开始：—————————————— test_Bee25.test_03_Configure——————————————————————\nJSON 文件路径: D:\\Automation\\SpeedybeeApp\\Element/Bee25/Android_Ele/Flight_settings\\ConfigureAct.json\n\u001b[32m2024-12-16 13:20:42\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Loading JSON file: D:\\Automation\\SpeedybeeApp\\Element/Bee25/Android_Ele/Flight_settings\\ConfigureAct.json\n\u001b[32m2024-12-16 13:20:45\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: com.runcam.android.runcambf:id/configuration_icon - 点击配置图标\n\u001b[32m2024-12-16 13:20:52\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mElement not found: 保存并重启\u001b[0m\n\u001b[32m2024-12-16 13:20:52\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mMessage: \nStacktrace:\nNoSuchElementError: An element could not be located on the page using the given search parameters.\n    at AndroidUiautomator2Driver.findElOrEls (C:\\Users\\28449\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\lib\\commands\\find.ts:86:11)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:60:12)\n    at AndroidUiautomator2Driver.findElement (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:75:12)\u001b[0m\nTraceback (most recent call last):\n  File \"D:\\Automation\\SpeedybeeApp\\Approach\\Control_Ele.py\", line 230, in _wait_and_get_element\n    self.wait.until(condition((locator, ele)))\n  File \"D:\\software\\IDE\\Python\\lib\\site-packages\\selenium\\webdriver\\support\\wait.py\", line 105, in until\n    raise TimeoutException(message, screen, stacktrace)\nselenium.common.exceptions.TimeoutException: Message: \nStacktrace:\nNoSuchElementError: An element could not be located on the page using the given search parameters.\n    at AndroidUiautomator2Driver.findElOrEls (C:\\Users\\28449\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\lib\\commands\\find.ts:86:11)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:60:12)\n    at AndroidUiautomator2Driver.findElement (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:75:12)\n\u001b[32m2024-12-16 13:20:52\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Screenshot saved: D:\\Automation\\SpeedybeeApp\\screenshots\\20241216_132052_保存并重启_未捕获.png\n\u001b[32m2024-12-16 13:20:52\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mAction click failed: 点击保存并重启\u001b[0m\n\u001b[32m2024-12-16 13:20:52\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mException during action execution: Action click failed: 点击保存并重启\u001b[0m\n",
+                "Traceback (most recent call last):\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\Approach\\Control_Ele.py\", line 304, in execute_actions\n    testcase.fail(error_msg)\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 675, in fail\n    raise self.failureException(msg)\n",
+                "AssertionError: Action click failed: 点击保存并重启\n",
+                "\nDuring handling of the above exception, another exception occurred:\n\n",
+                "Traceback (most recent call last):\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 59, in testPartExecutor\n    yield\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 591, in run\n    self._callTestMethod(testMethod)\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 549, in _callTestMethod\n    method()\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\test_case\\Android_Case\\Flight_settings\\test_Bee25.py\", line 108, in test_03_Configure\n    self.execute_actions(\"ConfigureAct.json\", self.driver, act_name=\"ConfigureAct\", group=\"action1\")\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\test_case\\Android_Case\\Flight_settings\\test_Bee25.py\", line 33, in execute_actions\n    execute_actions(my_json_path, driver, act_name, group,testcase=self)\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\Approach\\Control_Ele.py\", line 311, in execute_actions\n    testcase.fail(error_msg)\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 675, in fail\n    raise self.failureException(msg)\n",
+                "AssertionError: Exception during action execution: Action click failed: 点击保存并重启\n"
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_04_Motor",
+            "description": "电机",
+            "spendTime": "18.9 s",
+            "status": "失败",
+            "log": [
+                "第 2 次测试用例已开始：—————————————— test_Bee25.test_04_Motor——————————————————————\nJSON 文件路径: D:\\Automation\\SpeedybeeApp\\Element/Bee25/Android_Ele/Flight_settings\\MotorAct.json\n\u001b[32m2024-12-16 13:20:56\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Loading JSON file: D:\\Automation\\SpeedybeeApp\\Element/Bee25/Android_Ele/Flight_settings\\MotorAct.json\n\u001b[32m2024-12-16 13:20:57\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: com.runcam.android.runcambf:id/motors_icon - 点击电机图标\n\u001b[32m2024-12-16 13:21:03\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: com.runcam.android.runcambf:id/MotorDirectionBtn - 点击电机方向按钮\n\u001b[32m2024-12-16 13:21:11\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mElement not found: //android.widget.FrameLayout[@resource-id=\"com.runcam.android.runcambf:id/flutter_container\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[3]\u001b[0m\n\u001b[32m2024-12-16 13:21:11\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mMessage: \nStacktrace:\nNoSuchElementError: An element could not be located on the page using the given search parameters.\n    at AndroidUiautomator2Driver.findElOrEls (C:\\Users\\28449\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\lib\\commands\\find.ts:86:11)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:60:12)\n    at AndroidUiautomator2Driver.findElement (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:75:12)\u001b[0m\nTraceback (most recent call last):\n  File \"D:\\Automation\\SpeedybeeApp\\Approach\\Control_Ele.py\", line 230, in _wait_and_get_element\n    self.wait.until(condition((locator, ele)))\n  File \"D:\\software\\IDE\\Python\\lib\\site-packages\\selenium\\webdriver\\support\\wait.py\", line 105, in until\n    raise TimeoutException(message, screen, stacktrace)\nselenium.common.exceptions.TimeoutException: Message: \nStacktrace:\nNoSuchElementError: An element could not be located on the page using the given search parameters.\n    at AndroidUiautomator2Driver.findElOrEls (C:\\Users\\28449\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\lib\\commands\\find.ts:86:11)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:60:12)\n    at AndroidUiautomator2Driver.findElement (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:75:12)\n\u001b[32m2024-12-16 13:21:11\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Screenshot saved: D:\\Automation\\SpeedybeeApp\\screenshots\\20241216_132111___android.widget.FrameLayout[@resource-id=_com.run_未捕获.png\n\u001b[32m2024-12-16 13:21:11\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mAction click failed: 点击特定视图\u001b[0m\n\u001b[32m2024-12-16 13:21:11\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mException during action execution: Action click failed: 点击特定视图\u001b[0m\n",
+                "Traceback (most recent call last):\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\Approach\\Control_Ele.py\", line 304, in execute_actions\n    testcase.fail(error_msg)\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 675, in fail\n    raise self.failureException(msg)\n",
+                "AssertionError: Action click failed: 点击特定视图\n",
+                "\nDuring handling of the above exception, another exception occurred:\n\n",
+                "Traceback (most recent call last):\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 59, in testPartExecutor\n    yield\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 591, in run\n    self._callTestMethod(testMethod)\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 549, in _callTestMethod\n    method()\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\test_case\\Android_Case\\Flight_settings\\test_Bee25.py\", line 112, in test_04_Motor\n    self.execute_actions(\"MotorAct.json\", self.driver, act_name=\"MotorAct\", group=\"action1\")\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\test_case\\Android_Case\\Flight_settings\\test_Bee25.py\", line 33, in execute_actions\n    execute_actions(my_json_path, driver, act_name, group,testcase=self)\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\Approach\\Control_Ele.py\", line 311, in execute_actions\n    testcase.fail(error_msg)\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 675, in fail\n    raise self.failureException(msg)\n",
+                "AssertionError: Exception during action execution: Action click failed: 点击特定视图\n"
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_05_Receiver",
+            "description": "接收机",
+            "spendTime": "0.0 s",
+            "status": "跳过",
+            "log": [
+                ""
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_06_Vtx",
+            "description": "VTX",
+            "spendTime": "0.0 s",
+            "status": "跳过",
+            "log": [
+                ""
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_07_Osd",
+            "description": "OSD",
+            "spendTime": "19.3 s",
+            "status": "失败",
+            "log": [
+                "第 3 次测试用例已开始：—————————————— test_Bee25.test_07_Osd——————————————————————\nJSON 文件路径: D:\\Automation\\SpeedybeeApp\\Element/Bee25/Android_Ele/Flight_settings\\OsdAct.json\n\u001b[32m2024-12-16 13:21:15\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Loading JSON file: D:\\Automation\\SpeedybeeApp\\Element/Bee25/Android_Ele/Flight_settings\\OsdAct.json\n\u001b[32m2024-12-16 13:21:17\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: com.runcam.android.runcambf:id/osd_icon - 进入OSD页面\n\u001b[32m2024-12-16 13:21:17\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sleeping for 5 seconds - 等待 5 秒,进入OSD页面十分卡顿\n\u001b[32m2024-12-16 13:21:30\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mElement not found: new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(1)\u001b[0m\n\u001b[32m2024-12-16 13:21:30\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mMessage: \nStacktrace:\nNoSuchElementError: An element could not be located on the page using the given search parameters.\n    at AndroidUiautomator2Driver.findElOrEls (C:\\Users\\28449\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\lib\\commands\\find.ts:86:11)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:60:12)\n    at AndroidUiautomator2Driver.findElement (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:75:12)\u001b[0m\nTraceback (most recent call last):\n  File \"D:\\Automation\\SpeedybeeApp\\Approach\\Control_Ele.py\", line 230, in _wait_and_get_element\n    self.wait.until(condition((locator, ele)))\n  File \"D:\\software\\IDE\\Python\\lib\\site-packages\\selenium\\webdriver\\support\\wait.py\", line 105, in until\n    raise TimeoutException(message, screen, stacktrace)\nselenium.common.exceptions.TimeoutException: Message: \nStacktrace:\nNoSuchElementError: An element could not be located on the page using the given search parameters.\n    at AndroidUiautomator2Driver.findElOrEls (C:\\Users\\28449\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\lib\\commands\\find.ts:86:11)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:60:12)\n    at AndroidUiautomator2Driver.findElement (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:75:12)\n\u001b[32m2024-12-16 13:21:30\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Screenshot saved: D:\\Automation\\SpeedybeeApp\\screenshots\\20241216_132130_new UiSelector().resourceId(_com.runcam.android.ru_未捕获.png\n\u001b[32m2024-12-16 13:21:30\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mAction click failed: 点击第1个element_switch按钮\u001b[0m\n\u001b[32m2024-12-16 13:21:30\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mException during action execution: Action click failed: 点击第1个element_switch按钮\u001b[0m\n",
+                "Traceback (most recent call last):\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\Approach\\Control_Ele.py\", line 304, in execute_actions\n    testcase.fail(error_msg)\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 675, in fail\n    raise self.failureException(msg)\n",
+                "AssertionError: Action click failed: 点击第1个element_switch按钮\n",
+                "\nDuring handling of the above exception, another exception occurred:\n\n",
+                "Traceback (most recent call last):\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 59, in testPartExecutor\n    yield\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 591, in run\n    self._callTestMethod(testMethod)\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 549, in _callTestMethod\n    method()\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\test_case\\Android_Case\\Flight_settings\\test_Bee25.py\", line 122, in test_07_Osd\n    self.execute_actions(\"OsdAct.json\", self.driver, act_name=\"OsdAct\", group=\"action1\")\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\test_case\\Android_Case\\Flight_settings\\test_Bee25.py\", line 33, in execute_actions\n    execute_actions(my_json_path, driver, act_name, group,testcase=self)\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\Approach\\Control_Ele.py\", line 311, in execute_actions\n    testcase.fail(error_msg)\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 675, in fail\n    raise self.failureException(msg)\n",
+                "AssertionError: Exception during action execution: Action click failed: 点击第1个element_switch按钮\n"
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_08_Gps",
+            "description": "GPS",
+            "spendTime": "0.0 s",
+            "status": "跳过",
+            "log": [
+                ""
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_09_Mode",
+            "description": "模式",
+            "spendTime": "0.0 s",
+            "status": "跳过",
+            "log": [
                 ""
             ]
         }
     ],
     "testName": "测试报告",
-    "testAll": 4,
-    "testFail": 0,
-    "beginTime": "2024-12-03 18:04:08",
-    "totalTime": "410s",
-    "testSkip": 1,
+    "testAll": 9,
+    "testFail": 3,
+    "beginTime": "2024-12-16 13:20:33",
+    "totalTime": "64s",
+    "testSkip": 6,
     "testError": 0
 };
     function details(obj) {

@@ -7163,23 +7163,121 @@ body.skin-3 {
     "testResult": [
         {
             "className": "test_Bee25",
-            "methodName": "test_bf_01Setup_Setting01",
-            "description": "恢复默认设置",
-            "spendTime": "4.01 s",
+            "methodName": "test_01_Setup",
+            "description": "设置",
+            "spendTime": "0.0 s",
+            "status": "跳过",
+            "log": [
+                ""
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_02_Port",
+            "description": "端口",
+            "spendTime": "0.0 s",
+            "status": "跳过",
+            "log": [
+                ""
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_03_Configure",
+            "description": "配置",
+            "spendTime": "14.4 s",
             "status": "成功",
             "log": [
-                "第 1 次测试用例已开始：—————————————— test_Bee25.test_bf_01Setup_Setting01——————————————————————",
-                "0111111111111111111111111111111",
+                "第 1 次测试用例已开始：—————————————— test_Bee25.test_03_Configure——————————————————————",
+                "JSON 文件路径: D:\\Automation\\SpeedybeeApp\\Element/Bee25/Android_Ele/Flight_settings\\ConfigureAct.json",
+                "\u001b[32m2024-12-16 13:22:32\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Loading JSON file: D:\\Automation\\SpeedybeeApp\\Element/Bee25/Android_Ele/Flight_settings\\ConfigureAct.json",
+                "\u001b[32m2024-12-16 13:22:33\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: com.runcam.android.runcambf:id/configuration_icon - 点击配置图标",
+                "\u001b[32m2024-12-16 13:22:37\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: 保存并重启 - 点击保存并重启",
+                "\u001b[32m2024-12-16 13:22:37\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Sleeping for 5 seconds - 等待 5 秒",
+                ""
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_04_Motor",
+            "description": "电机",
+            "spendTime": "23.1 s",
+            "status": "失败",
+            "log": [
+                "第 2 次测试用例已开始：—————————————— test_Bee25.test_04_Motor——————————————————————\nJSON 文件路径: D:\\Automation\\SpeedybeeApp\\Element/Bee25/Android_Ele/Flight_settings\\MotorAct.json\n\u001b[32m2024-12-16 13:22:46\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Loading JSON file: D:\\Automation\\SpeedybeeApp\\Element/Bee25/Android_Ele/Flight_settings\\MotorAct.json\n\u001b[32m2024-12-16 13:22:48\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: com.runcam.android.runcambf:id/motors_icon - 点击电机图标\n\u001b[32m2024-12-16 13:22:51\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: com.runcam.android.runcambf:id/MotorDirectionBtn - 点击电机方向按钮\n\u001b[32m2024-12-16 13:22:59\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Clicked element: //android.widget.FrameLayout[@resource-id=\"com.runcam.android.runcambf:id/flutter_container\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[3] - 点击特定视图\n\u001b[32m2024-12-16 13:23:05\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mElement not found: 1\u001b[0m\n\u001b[32m2024-12-16 13:23:05\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mMessage: \nStacktrace:\nNoSuchElementError: An element could not be located on the page using the given search parameters.\n    at AndroidUiautomator2Driver.findElOrEls (C:\\Users\\28449\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\lib\\commands\\find.ts:86:11)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:60:12)\n    at AndroidUiautomator2Driver.findElement (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:75:12)\u001b[0m\nTraceback (most recent call last):\n  File \"D:\\Automation\\SpeedybeeApp\\Approach\\Control_Ele.py\", line 230, in _wait_and_get_element\n    self.wait.until(condition((locator, ele)))\n  File \"D:\\software\\IDE\\Python\\lib\\site-packages\\selenium\\webdriver\\support\\wait.py\", line 105, in until\n    raise TimeoutException(message, screen, stacktrace)\nselenium.common.exceptions.TimeoutException: Message: \nStacktrace:\nNoSuchElementError: An element could not be located on the page using the given search parameters.\n    at AndroidUiautomator2Driver.findElOrEls (C:\\Users\\28449\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\lib\\commands\\find.ts:86:11)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:60:12)\n    at AndroidUiautomator2Driver.findElement (C:\\Users\\28449\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\lib\\basedriver\\commands\\find.ts:75:12)\n\u001b[32m2024-12-16 13:23:05\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mINFO\u001b[0m - Screenshot saved: D:\\Automation\\SpeedybeeApp\\screenshots\\20241216_132305_1_未捕获.png\n\u001b[32m2024-12-16 13:23:05\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mAction click failed: 点击电机1\u001b[0m\n\u001b[32m2024-12-16 13:23:05\u001b[0m - \u001b[34mroot\u001b[0m - \u001b[1;30mERROR\u001b[0m - \u001b[31mException during action execution: Action click failed: 点击电机1\u001b[0m\n",
+                "Traceback (most recent call last):\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\Approach\\Control_Ele.py\", line 304, in execute_actions\n    testcase.fail(error_msg)\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 675, in fail\n    raise self.failureException(msg)\n",
+                "AssertionError: Action click failed: 点击电机1\n",
+                "\nDuring handling of the above exception, another exception occurred:\n\n",
+                "Traceback (most recent call last):\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 59, in testPartExecutor\n    yield\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 591, in run\n    self._callTestMethod(testMethod)\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 549, in _callTestMethod\n    method()\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\test_case\\Android_Case\\Flight_settings\\test_Bee25.py\", line 112, in test_04_Motor\n    self.execute_actions(\"MotorAct.json\", self.driver, act_name=\"MotorAct\", group=\"action1\")\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\test_case\\Android_Case\\Flight_settings\\test_Bee25.py\", line 33, in execute_actions\n    execute_actions(my_json_path, driver, act_name, group,testcase=self)\n",
+                "  File \"D:\\Automation\\SpeedybeeApp\\Approach\\Control_Ele.py\", line 311, in execute_actions\n    testcase.fail(error_msg)\n",
+                "  File \"D:\\software\\IDE\\Python\\lib\\unittest\\case.py\", line 675, in fail\n    raise self.failureException(msg)\n",
+                "AssertionError: Exception during action execution: Action click failed: 点击电机1\n"
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_05_Receiver",
+            "description": "接收机",
+            "spendTime": "0.0 s",
+            "status": "跳过",
+            "log": [
+                ""
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_06_Vtx",
+            "description": "VTX",
+            "spendTime": "0.0 s",
+            "status": "跳过",
+            "log": [
+                ""
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_07_Osd",
+            "description": "OSD",
+            "spendTime": "0.0 s",
+            "status": "跳过",
+            "log": [
+                ""
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_08_Gps",
+            "description": "GPS",
+            "spendTime": "0.0 s",
+            "status": "跳过",
+            "log": [
+                ""
+            ]
+        },
+        {
+            "className": "test_Bee25",
+            "methodName": "test_09_Mode",
+            "description": "模式",
+            "spendTime": "0.0 s",
+            "status": "跳过",
+            "log": [
                 ""
             ]
         }
     ],
     "testName": "测试报告",
-    "testAll": 1,
-    "testFail": 0,
-    "beginTime": "2024-12-12 16:13:13",
-    "totalTime": "93s",
-    "testSkip": 0,
+    "testAll": 9,
+    "testFail": 1,
+    "beginTime": "2024-12-16 13:22:24",
+    "totalTime": "60s",
+    "testSkip": 7,
     "testError": 0
 };
     function details(obj) {
