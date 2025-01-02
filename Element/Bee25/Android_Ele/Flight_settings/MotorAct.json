@@ -1,0 +1,109 @@
+{
+  "MotorAct": {
+    "action1": [
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/motors_icon",
+        "comment": "点击电机图标"
+      },
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/MotorDirectionBtn",
+        "comment": "点击电机方向按钮"
+      },
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "//android.widget.FrameLayout[@resource-id=\"com.runcam.android.runcambf:id/flutter_container\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[3]",
+        "comment": "点击特定视图"
+      },
+      {
+        "action": "click",
+        "appby": "ACCESSIBILITY_ID",
+        "cond": "el",
+        "ele": "1",
+        "comment": "点击电机1"
+      },
+      {
+        "action": "click",
+        "appby": "ACCESSIBILITY_ID",
+        "cond": "el",
+        "ele": "正转",
+        "comment": "设置电机1为正转"
+      },
+      {
+        "action": "click",
+        "appby": "ACCESSIBILITY_ID",
+        "cond": "el",
+        "ele": "2",
+        "comment": "点击电机2"
+      },
+      {
+        "action": "click",
+        "appby": "ACCESSIBILITY_ID",
+        "cond": "el",
+        "ele": "反转",
+        "comment": "设置电机2为反转"
+      },
+      {
+        "action": "click",
+        "appby": "ACCESSIBILITY_ID",
+        "cond": "el",
+        "ele": "3",
+        "comment": "点击电机3"
+      },
+      {
+        "action": "click",
+        "appby": "ACCESSIBILITY_ID",
+        "cond": "el",
+        "ele": "反转",
+        "comment": "设置电机3为反转"
+      },
+      {
+        "action": "click",
+        "appby": "ACCESSIBILITY_ID",
+        "cond": "el",
+        "ele": "4",
+        "comment": "点击电机4"
+      },
+      {
+        "action": "click",
+        "appby": "ACCESSIBILITY_ID",
+        "cond": "el",
+        "ele": "正转",
+        "comment": "设置电机4为正转"
+      },
+      {
+        "action": "click",
+        "appby": "ACCESSIBILITY_ID",
+        "cond": "el",
+        "ele": "完成",
+        "comment": "点击完成按钮"
+      },
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/saveAndRebootBtn",
+        "comment": "点击保存并重启按钮"
+      },
+      {
+          "action": "time",
+          "duration": 5,
+          "comment": "等待 5 秒,电机才可以保存成功，并且提交"
+      },
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/submmit_btn",
+        "comment": "点击提交按钮"
+      }
+    ]
+  }
+}

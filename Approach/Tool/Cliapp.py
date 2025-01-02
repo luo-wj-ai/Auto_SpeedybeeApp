@@ -1,10 +1,11 @@
 import os
 import inspect
 
-def assert_method(driver, test_method_name=None, result_dir="APP_Result/result/F405_AIO/Android_result"):
+# -*- coding: utf-8 -*-
+
+def cliapp(driver, test_method_name=None, result_dir="APP_Result/result/F405_AIO/Android_result"):
     """
     从设备剪切板中获取数据并写入指定目录的文件。文件名为调用的测试方法名。
-
     :param driver: Appium driver 对象
     :param result_dir: 结果存储目录，默认值为 'APP_Result/result/F405_AIO/Android_result'
     :param test_method_name: 调用此方法的测试方法名，若未提供则自动获取

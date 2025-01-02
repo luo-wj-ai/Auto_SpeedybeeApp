@@ -16,8 +16,11 @@ manufacturer_id SPBE
 feature LED_STRIP
 feature OSD
 
-# master
-set acc_calibration = 84,363,2,1
+# aux
+aux 0 0 255 1300 1700 0 0
+aux 1 1 255 1300 1700 0 0
+aux 2 2 255 1300 1700 0 0
+aux 3 6 255 1300 1700 0 0
 
 profile 0
 

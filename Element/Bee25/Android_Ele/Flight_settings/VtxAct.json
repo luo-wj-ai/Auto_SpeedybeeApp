@@ -1,0 +1,41 @@
+{
+  "VtxAct": {
+    "action1": [
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/vtx_icon",
+        "comment": "点击VTX图标以进入设置页面"
+      },
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/vtx_load_table_btn",
+        "comment": "点击加载频率表按钮"
+      },
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/load_from_local_btn",
+        "comment": "点击从本地加载按钮"
+      },
+      {
+        "action": "click",
+        "appby": "ANDROID_UIAUTOMATOR",
+        "cond": "el",
+        "ele": "new UiSelector().text(\"IRC Tramp(USA)\")",
+        "comment": "选择IRC Tramp(USA)选项"
+      },
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/save_btn",
+        "comment": "点击保存按钮以保存设置"
+      }
+    ]
+  }
+}

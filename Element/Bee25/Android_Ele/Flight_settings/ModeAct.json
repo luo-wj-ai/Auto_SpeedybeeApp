@@ -1,0 +1,62 @@
+{
+  "ModeAct": {
+    "action1": [
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/modes_icon",
+        "comment": "进入模式页面"
+      },
+      {
+        "action": "click",
+        "appby": "ANDROID_UIAUTOMATOR",
+        "cond": "el",
+        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/add_range_btn\").instance(0)",
+        "comment": "解锁-添加范围-AUX1"
+      },
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "android:id/text1",
+        "comment": "点击选择框"
+      },
+      {
+        "action": "click",
+        "appby": "ANDROID_UIAUTOMATOR",
+        "cond": "el",
+        "ele": "new UiSelector().text(\"AUX 1\")",
+        "comment": "选择AUX 1"
+      },
+      {
+        "action": "click",
+        "appby": "ANDROID_UIAUTOMATOR",
+        "cond": "el",
+        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/add_range_btn\").instance(1)",
+        "comment": "自稳模式-添加范围-AUX2"
+      },
+      {
+        "action": "click",
+        "appby": "ANDROID_UIAUTOMATOR",
+        "cond": "el",
+        "ele": "new UiSelector().text(\"AUTO\")",
+        "comment": "选择AUTO"
+      },
+      {
+        "action": "click",
+        "appby": "ANDROID_UIAUTOMATOR",
+        "cond": "el",
+        "ele": "new UiSelector().text(\"AUX 2\")",
+        "comment": "选择AUX 2"
+      },
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/save_btn",
+        "comment": "保存设置"
+      }
+    ]
+  }
+}

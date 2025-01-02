@@ -1,0 +1,69 @@
+{
+  "OsdAct": {
+    "action1": [
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/osd_icon",
+        "comment": "进入OSD页面"
+      },
+      {
+        "action": "time",
+        "duration": 5,
+        "comment": "等待 5 秒,进入OSD页面十分卡顿"
+      },
+       {
+        "action": "click",
+        "appby": "ANDROID_UIAUTOMATOR",
+        "cond": "el",
+        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(1)",
+        "comment": "点击第1个element_switch按钮"
+      },
+      {
+        "action": "click",
+        "appby": "ANDROID_UIAUTOMATOR",
+        "cond": "el",
+        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(11)",
+        "comment": "点击第11个element_switch按钮"
+      },
+      {
+        "action": "click",
+        "appby": "ANDROID_UIAUTOMATOR",
+        "cond": "el",
+        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(13)",
+        "comment": "点击第13个element_switch按钮"
+      },
+      {
+        "action": "rolling",
+        "start_locator_type": "XPATH",
+        "start_locator": "(//android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"])[15]",
+        "end_locator_type": "XPATH",
+        "end_locator": "(//android.view.View[@resource-id=\"com.runcam.android.runcambf:id/element_switch\"])[1]",
+        "cond": "el",
+        "comment": "从起点滚动到终点"
+      },
+      {
+        "action": "click",
+        "appby": "ANDROID_UIAUTOMATOR",
+        "cond": "el",
+        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(5)",
+        "comment": "点击第5个element_switch按钮"
+      },
+      {
+        "action": "click",
+        "appby": "ANDROID_UIAUTOMATOR",
+        "cond": "el",
+        "ele": "new UiSelector().resourceId(\"com.runcam.android.runcambf:id/element_switch\").instance(13)",
+        "comment": "再次点击第13个element_switch按钮"
+      },
+      {
+        "action": "click",
+        "appby": "ID",
+        "cond": "el",
+        "ele": "com.runcam.android.runcambf:id/full_screen_btn",
+        "comment": "全屏显示OSD设置"
+      }
+    ]
+  }
+}

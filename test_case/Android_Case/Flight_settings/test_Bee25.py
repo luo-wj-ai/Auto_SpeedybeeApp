@@ -8,11 +8,11 @@ from Approach.Tool.Cliapp import cliapp
 from Approach.Tool.FileComparator import FileComparator
 
 # 测试报告路径
-result_dir = "APP_Result/result/F405_AIO/Android_result"
+result_dir = "APP_Result/result/Bee25/Flight_settings_result"
 # 测试数据路径
-JSON_dir = "Element/F405_AIO/Android_Ele/BF"
+JSON_dir = "Element/Bee25/Android_Ele/Flight_settings"
 
-class MyUnit(unittest.TestCase):
+class test_Bee25(unittest.TestCase):
     setUp_count = 0       # 每次执行用例的计数器
     driver = None         # 用于保存 Android 驱动实例
     android_steps = None  # 用于保存 Android_Common_Step 实例
@@ -20,8 +20,8 @@ class MyUnit(unittest.TestCase):
     use_contains_assert = True  # 默认为 True，表示使用 compare_files 方法进行文件比较
     sequence_to_check = "*"  # 全局变量，存储待检查的字符串
 
-    @staticmethod
-    def execute_actions(json_path, driver, act_name, group):
+    #获取JSON数据入口
+    def execute_actions(self,json_path, driver, act_name, group):
         """
         执行动作：根据 JSON 配置文件执行操作
         - json_path: JSON 文件路径
@@ -30,8 +30,9 @@ class MyUnit(unittest.TestCase):
         - group: 动作组
         """
         my_json_path = get_json_path(json_path, JSON_dir)
-        execute_actions(my_json_path, driver, act_name, group)
+        execute_actions(my_json_path, driver, act_name, group,testcase=self)
 
+    #断言出口
     @staticmethod
     def assert_compare_files_logic(cli_file_path, win_cli_file_path, use_contains_assert, sequence_to_check):
         """
@@ -66,58 +67,71 @@ class MyUnit(unittest.TestCase):
         if cls.driver is None:
             # 初始化 Android 驱动
             cls.driver = AndroidAppDriver.get_driver(version="14")
-
             # 实例化 Android_Common_Step，只需执行一次
             cls.android_steps = Android_Common_Step(cls.driver)
-
             # 打开专家模式
-            cls.android_steps.Open_expert_mode()
-
-    @classmethod
-    def tearDownClass(cls):
-        """
-        tearDownClass：用于在所有测试用例执行之后的清理操作
-        - 关闭 driver 并清除资源（可选，受 close_driver 控制）
-        """
-        if cls.close_driver and cls.driver is not None:
-            print("正在关闭 driver...")
-            cls.android_steps.end_break()  # 执行关闭操作
-            cls.driver = None  # 清除 driver 引用
-        else:
-            print("未关闭 driver")
+            # cls.android_steps.Open_expert_mode()
+        pass
 
     def setUp(self):
-        """
-        setUp：每次测试用例执行之前的初始化操作
-        - 打印当前用例的执行信息
-        - 增加执行计数器
-        """
-        MyUnit.setUp_count += 1
-        print(f"第 {MyUnit.setUp_count} 次测试用例已开始：—————————————— {self.__class__.__name__}.{self._testMethodName}——————————————————————")
+        test_Bee25.setUp_count += 1
+        print(f"第 {test_Bee25.setUp_count} 次测试用例已开始：—————————————— {self.__class__.__name__}.{self._testMethodName}——————————————————————")
 
     def tearDown(self):
-        """
-        tearDown：每次测试用例执行之后的清理操作
-        - 进入 CLI 模式
-        - 执行文件比较逻辑（封装的 assert_compare_files_logic 方法）
-        """
-        time.sleep(4)  # 强制等待，确保上一个保存操作完成
+        time.sleep(4)# 强制等待，确保上一个保存操作完成
+        pass
 
-        # 进入 CLI 模式
-        self.android_steps.enter_CLI_mode()
-
-        # 获取剪切板数据并生成文件路径
-        cli_file_path, win_cli_file_path = cliapp(self.driver, self._testMethodName, result_dir)
-
-        # 调用文件比较逻辑进行断言
-        self.assert_compare_files_logic(cli_file_path, win_cli_file_path, self.use_contains_assert, self.sequence_to_check)
-        self.use_contains_assert=True #如果use_contains_assert为False，就重新赋值
-
-
-"""
-子类关闭方法示例：
     @classmethod
     def tearDownClass(cls):
-        cls.close_driver = True  # 设置标记位以关闭 driver
-        super().tearDownClass()  # 调用父类的 tearDownClass
-"""
+        # 进入 CLI 模式
+        cls.android_steps.enter_CLI_mode()
+        # 获取剪切板数据并生成文件路径
+        # cli_file_path, win_cli_file_path = cliapp(cls.driver, cls.__name__, result_dir)
+        # # 调用文件比较逻辑进行断言
+        # cls.assert_compare_files_logic(cli_file_path, win_cli_file_path, cls.use_contains_assert, cls.sequence_to_check)
+        # print("正在关闭 driver...")
+        cls.android_steps.end_break()  # 执行关闭操作
+        pass
+
+
+    def test_01_Setup(self):
+        """设置"""
+        self.execute_actions("SetupAct.json", self.driver, act_name="SetupAct", group="action1")
+
+
+    def test_02_Port(self):
+        """端口"""
+        self.execute_actions("PortAct.json", self.driver, act_name="PortAct", group="action1")
+
+    def test_03_Configure(self):
+        """配置"""
+        self.execute_actions("ConfigureAct.json", self.driver, act_name="ConfigureAct", group="action1")
+
+    # @unittest.skip
+    # def test_04_Motor(self):
+    #     """电机"""
+    #     self.execute_actions("MotorAct.json", self.driver, act_name="MotorAct", group="action1")
+
+    def test_05_Receiver(self):
+        """接收机"""
+        self.execute_actions("ReceiverAct.json", self.driver, act_name="ReceiverAct", group="action1")
+
+
+    def test_07_Osd(self):
+        """OSD"""
+        self.execute_actions("OsdAct.json", self.driver, act_name="OsdAct", group="action1")
+
+
+    def test_06_Vtx(self):
+        """VTX"""
+        self.execute_actions("VtxAct.json", self.driver, act_name="VtxAct", group="action1")
+
+
+    def test_08_Gps(self):
+        """GPS"""
+        self.execute_actions("GpsAct.json", self.driver, act_name="GpsAct", group="action1")
+
+
+    def test_09_Mode(self):
+        """模式"""
+        self.execute_actions("ModeAct.json", self.driver, act_name="ModeAct", group="action1")

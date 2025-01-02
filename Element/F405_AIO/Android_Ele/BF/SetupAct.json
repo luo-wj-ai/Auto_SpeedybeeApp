@@ -1,0 +1,27 @@
+{
+  "SetupAct": {
+    "action1": [
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "//android.widget.LinearLayout[@resource-id=\"com.runcam.android.runcambf:id/more_button_btn\"]",
+        "comment": "点击更多"
+      },
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/reset_settings_btn\"]",
+        "comment": "点击恢复默认设置"
+      },
+      {
+        "action": "click",
+        "appby": "XPATH",
+        "cond": "el",
+        "ele": "//android.widget.TextView[@resource-id=\"com.runcam.android.runcambf:id/submmit_btn\"]",
+        "comment": "点击重置"
+      }
+    ]
+  }
+}
