@@ -26,7 +26,7 @@ git pull
 建立分支：git branch iOS
 切换分支：git checkout iOS
 合并分支：git merge iOS
-删除分支：git branch -d iOS
+删除分支：git branch -d iOSexit
 ```
 ---
 ### 三、运行项目
@@ -40,20 +40,6 @@ git pull
 | 预设    | Presets    | 选择固件4.5-an进行预设                               |            |
 | 端口    | Port       | 打开UART2-MSP<br/>UART3-串行接收机<br/>UART4-FrSky |            |
 | 模式    | Mode       | 添加前四个范围和前3个链接                               |            |
-| 接收机   | Receiver   |                                             |            |
-| 电机    | Motor      |                                             |            |
-| 配置    | Configure  |                                             |            |
-| PID调整 | Pid        |                                             |            |
-| OSD   | Osd        |                                             |            |
-| 图传    | Vtx        |                                             |            |
-| 电源和电池 | Battery    |                                             |            |
-| 失控保护  | Failsafe   |                                             |            |
-| 调整    | Adjustment |                                             |            |
-| GPS   | Gps        |                                             |            |
-| 舵机    | Servos     |                                             |            |
-| LED灯带 | Led        |                                             |            |
-| 黑匣子   | Blackbox   |                                             |            |
-| CLI   | Cli        |                                             |            |
 
 ### 五、测试动作
 
@@ -212,7 +198,4 @@ git pull
    3. [luo的Android](https://blog.csdn.net/Luoweijie42/article/details/140212378?csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22140212378%22%2C%22source%22%3A%22Luoweijie42%22%7D)
    4. [luo的iOS](https://blog.csdn.net/Luoweijie42/article/details/140344444)
    3.xpath基础概念：[菜鸟教程](https://www.runoob.com/xpath/xpath-syntax.html)
-   4.基础unittest教学视频：[哔哩哔哩](【2023最新UnitTest自动化测试框架和unittest数据驱动实战讲解】https://www.bilibili.com/video/BV1AT41167wv?p=5&vd_source=f1420afe1b941d0191a7f686b3a2f85c)
-## Android-OSD策略
-
-​      
+   4.基础unittest教学视频：[哔哩哔哩](【2023最新UnitTest自动化测试框架和unittest数据驱动实战讲解】https://www.bilibili.com/video/BV1AT41167wv?p=5&vd_source=f1420afe1b941d0191a7f686b3a2f85c) 
